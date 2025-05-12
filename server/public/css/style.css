@@ -20,7 +20,7 @@ body {
 .header {
     background-image: linear-gradient(rgba(91, 143, 221, 0.7),
     rgba(220, 234, 241, 0.952)),
-    url(./imagenes/marca\ de\ agua.jpg);
+    url(../imagenes/marca\ de\ agua.jpg);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -118,7 +118,7 @@ body {
 .ipostel {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7),
     rgba(0, 0, 0, 0.7)),
-    url(./imagenes/ipostel.jpg);
+    url(../imagenes/ipostel.jpg);
     background-position: center bottom;
     background-repeat: no-repeat;
     position: relative;
@@ -181,7 +181,7 @@ body {
 .services {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7),
             rgba(0, 0, 0, 0.7)),
-        url(./imagenes/images.jfif);
+        url(../imagenes/images.jfif);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -239,7 +239,7 @@ body {
 }
 
 .general-2 {
-    background-image: url(./imagenes/delivery.webp);
+    background-image: url(../imagenes/delivery.webp);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -247,7 +247,7 @@ body {
 }
 
 .general-3 {
-    background-image: url(./imagenes/wb5IgTQ8N8S6dANd.jpg);
+    background-image: url(../imagenes/wb5IgTQ8N8S6dANd.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
