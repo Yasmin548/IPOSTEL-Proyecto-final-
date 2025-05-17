@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
-const indexRouter = require("./routes/index.route");
+const indexRouter = require("./src/routes/index.route");
 
 //Inicialización de express (librería para crear API)
 const server = express();
@@ -28,12 +28,12 @@ server.use(cors(corsOptions));
 const PORT = process.env.PORT || 3001;
 
 //Declara el uso de archivos estáticos (archivos del front)
-server.use(express.static(path.join(__dirname, "views")));
+server.use(express.static(path.join(__dirname, "src", "views")));
 server.use(express.static("public"));
 
 //Declaro que la ruta principal la sirva desde indexRouter
 server.use("/", indexRouter);
 
 server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
