@@ -6,10 +6,20 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+//Así vas a crear las tablas, las haces con modelos, muy limpio, luego te explico
+model user {
+  id       Int     @id @default(autoincrement())
+  name     String
+  lastname String
+  email    String  @unique
+  password String
+  role     String?
 }
