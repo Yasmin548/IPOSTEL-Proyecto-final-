@@ -37,3 +37,8 @@ server.use("/", indexRouter);
 server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+//404 Handler
+server.use((req, res) => {
+  res.redirect("/");
+});
