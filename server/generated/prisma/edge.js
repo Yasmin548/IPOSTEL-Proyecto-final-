@@ -193,7 +193,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Hugo Light\\Documents\\Programacion\\IPOSTEL-Proyecto-final-\\server\\generated\\prisma",
+      "value": "C:\\Users\\MOISES\\Documents\\Desarrollo\\Portafolio\\IPOSTEL-Proyecto-final-\\server\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -207,7 +207,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Hugo Light\\Documents\\Programacion\\IPOSTEL-Proyecto-final-\\server\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\MOISES\\Documents\\Desarrollo\\Portafolio\\IPOSTEL-Proyecto-final-\\server\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
