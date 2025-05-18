@@ -11,8 +11,7 @@ const employeeList = async (req, res)=>{
         data: response
        }) :  res.status(200).json({
         status:200,
-        message:"No hay empleados registrados",
-        data: response
+        message:"No hay empleados registrados"
        })
        
     } catch (error) {
