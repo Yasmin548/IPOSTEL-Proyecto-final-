@@ -16,10 +16,46 @@ datasource db {
 
 //Así vas a crear las tablas, las haces con modelos, muy limpio, luego te explico
 model user {
-  id       Int     @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   name     String
   lastname String
-  email    String  @unique
+  email    String @unique
   password String
-  role     String?
+  role     role?  @default(customer)
+}
+
+model empleado {
+  id           Int      @id @default(autoincrement())
+  photo        String?
+  name         String
+  lastname     String
+  birthday     DateTime
+  edad         Int
+  sexo         String
+  educacion    String
+  telefono     Int
+  direccion    String
+  email        String   @unique
+  fechaingreso DateTime
+  cargo        String
+}
+
+model sucursal {
+  id                Int    @id @default(autoincrement())
+  estado            String
+  municipio         String
+  parroquia         String
+  direccionsucursal String
+}
+
+model cargo {
+  id           Int    @id @default(autoincrement())
+  cargo        String
+  departamento String
+}
+
+enum role {
+  Admin
+  employee
+  customer
 }

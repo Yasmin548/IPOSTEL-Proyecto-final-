@@ -20,11 +20,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.8.2
+ * Prisma Client JS version: 6.8.1
  * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
  */
 Prisma.prismaVersion = {
-  client: "6.8.2",
+  client: "6.8.1",
   engine: "2060c79ba17c6bb9f5823312b6f6b7f4a845738e"
 }
 
@@ -129,6 +129,36 @@ exports.Prisma.UserScalarFieldEnum = {
   role: 'role'
 };
 
+exports.Prisma.EmpleadoScalarFieldEnum = {
+  id: 'id',
+  photo: 'photo',
+  name: 'name',
+  lastname: 'lastname',
+  birthday: 'birthday',
+  edad: 'edad',
+  sexo: 'sexo',
+  educacion: 'educacion',
+  telefono: 'telefono',
+  direccion: 'direccion',
+  email: 'email',
+  fechaingreso: 'fechaingreso',
+  cargo: 'cargo'
+};
+
+exports.Prisma.SucursalScalarFieldEnum = {
+  id: 'id',
+  estado: 'estado',
+  municipio: 'municipio',
+  parroquia: 'parroquia',
+  direccionsucursal: 'direccionsucursal'
+};
+
+exports.Prisma.CargoScalarFieldEnum = {
+  id: 'id',
+  cargo: 'cargo',
+  departamento: 'departamento'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -143,13 +173,42 @@ exports.Prisma.userOrderByRelevanceFieldEnum = {
   name: 'name',
   lastname: 'lastname',
   email: 'email',
-  password: 'password',
-  role: 'role'
+  password: 'password'
 };
 
+exports.Prisma.empleadoOrderByRelevanceFieldEnum = {
+  photo: 'photo',
+  name: 'name',
+  lastname: 'lastname',
+  sexo: 'sexo',
+  educacion: 'educacion',
+  direccion: 'direccion',
+  email: 'email',
+  cargo: 'cargo'
+};
+
+exports.Prisma.sucursalOrderByRelevanceFieldEnum = {
+  estado: 'estado',
+  municipio: 'municipio',
+  parroquia: 'parroquia',
+  direccionsucursal: 'direccionsucursal'
+};
+
+exports.Prisma.cargoOrderByRelevanceFieldEnum = {
+  cargo: 'cargo',
+  departamento: 'departamento'
+};
+exports.role = exports.$Enums.role = {
+  Admin: 'Admin',
+  employee: 'employee',
+  customer: 'customer'
+};
 
 exports.Prisma.ModelName = {
-  user: 'user'
+  user: 'user',
+  empleado: 'empleado',
+  sucursal: 'sucursal',
+  cargo: 'cargo'
 };
 
 /**

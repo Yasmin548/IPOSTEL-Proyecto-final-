@@ -22,5 +22,41 @@ model user{
   lastname String
   email String @unique
   password String
-  role String?
+  role role? @default(customer)
+}
+
+model empleado{
+  id Int @id @default(autoincrement())
+  photo String?
+  name String
+  lastname String
+  birthday DateTime
+  edad Int
+  sexo String
+  educacion String
+  telefono Int
+  direccion String
+  email String @unique
+  fechaingreso DateTime
+  cargo String
+}
+
+model sucursal{
+  id Int @id @default(autoincrement())
+  estado String
+  municipio String
+  parroquia String
+  direccionsucursal String
+}
+
+model cargo{
+  id Int @id @default(autoincrement())
+  cargo String
+  departamento String
+}
+
+enum role{
+  Admin
+  employee
+  customer
 }
