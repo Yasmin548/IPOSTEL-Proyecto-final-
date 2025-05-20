@@ -1,52 +1,51 @@
-const { empleado } = require("../../config/prisma.config")
+const { empleado } = require("../../config/prisma.config");
 
+const createEmployee = async (req, res) => {
+  try {
+    const {
+      id,
+      photo,
+      name,
+      lastname,
+      birthday,
+      edad,
+      sexo,
+      educacion,
+      telefono,
+      direccion,
+      email,
+      fechaingreso,
+      cargo,
+    } = req.body;
 
-const createEmployee = async (req, res)=>{
-   try {
-     const {
-        cedula,
-        nombre,
-        apellido,
-        cumpleaños,
-        edad,
-        sexo,
-        educacion,
-        telefono,
-        direccion,
-        correo,
-        sucursal,
-        ingreso,
-        cargo
-
-    }= req.body
-
-    const user= cedula || nombre || apellido || correo || cargo || sucursal
-   
-    if(!user){
-        return res.status(500).json({
-            status:500,
-            message:"Ingresar la informacion correspondiente",
-        })
+    if (!id || !name || !lastname || !email || !cargo) {
+      return res.status(400).json({
+        status: 400,
+        message:
+          "Faltan campos obligatorios: cédula, nombre, apellido, email o cargo",
+      });
     }
 
     const newUser = await empleado.create({
-        cedula,
-        nombre,
-        apellido,
-        cumpleaños,
-        edad,
-        sexo,
-        educacion,
-        telefono,
-        direccion,
-        correo,
-        sucursal,
-        ingreso,
-        cargo
+      id,
+      photo,
+      name,
+      lastname,
+      birthday,
+      edad,
+      sexo,
+      educacion,
+      telefono,
+      direccion,
+      email,
+      fechaingreso,
+      cargo,
+    });
 
-    })
-
-   } catch (error) {
-    
-   }
-}
+    return res.status(201).json({
+      status: 201,
+      message: "Empleado registrado con exito",
+      data: newUser,
+    });
+  } catch (error) {}
+};
