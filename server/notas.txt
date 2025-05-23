@@ -1,0 +1,5 @@
+16/05/25
+- Instalé prisma (un orm) con npm install prisma @prisma/client
+- Creé un controlador para que si no existe la base de datos se cree automáticamente
+- Arreglé el como se sirven los archivos estáticos (problema de referencia a la ruta)
+
