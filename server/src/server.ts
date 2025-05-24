@@ -28,8 +28,8 @@ server.use(cors(corsOptions));
 const PORT = process.env.PORT || 3001;
 
 //Declara el uso de archivos estáticos (archivos del front)
-server.use(express.static(path.join(__dirname, "src", "views")));
-server.use(express.static(path.join(__dirname, "src", "public")));
+server.use(express.static(path.join(__dirname, "..", "views")));
+server.use(express.static(path.join(__dirname, "..", "public")));
 
 //Declaro que la ruta principal la sirva desde indexRouter
 server.use("/", indexRouter);
