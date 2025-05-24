@@ -5,6 +5,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 import path from "path";
 import indexRouter from "./routes/index.route";
+import { IFunctionResponse } from "./types/index.types";
 
 //Inicialización de express (librería para crear API)
 const server = express();
