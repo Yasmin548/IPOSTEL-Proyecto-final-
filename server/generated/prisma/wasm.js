@@ -120,42 +120,42 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  lastname: 'lastname',
-  email: 'email',
-  password: 'password',
-  role: 'role'
+exports.Prisma.UsuarioScalarFieldEnum = {
+  correo: 'correo',
+  nombre: 'nombre',
+  apellido: 'apellido',
+  contraseña: 'contraseña',
+  rol: 'rol'
 };
 
 exports.Prisma.EmpleadoScalarFieldEnum = {
-  id: 'id',
-  photo: 'photo',
-  name: 'name',
-  lastname: 'lastname',
-  birthday: 'birthday',
+  dni: 'dni',
+  foto: 'foto',
+  nombre: 'nombre',
+  apellido: 'apellido',
+  fechaNacimiento: 'fechaNacimiento',
   edad: 'edad',
   sexo: 'sexo',
   educacion: 'educacion',
   telefono: 'telefono',
   direccion: 'direccion',
-  email: 'email',
-  fechaingreso: 'fechaingreso',
-  cargo: 'cargo'
+  correo: 'correo',
+  fechaIngreso: 'fechaIngreso',
+  cargoId: 'cargoId',
+  sucursalRif: 'sucursalRif'
 };
 
 exports.Prisma.SucursalScalarFieldEnum = {
-  id: 'id',
+  rif: 'rif',
   estado: 'estado',
   municipio: 'municipio',
   parroquia: 'parroquia',
-  direccionsucursal: 'direccionsucursal'
+  direccion: 'direccion'
 };
 
 exports.Prisma.CargoScalarFieldEnum = {
   id: 'id',
-  cargo: 'cargo',
+  nombre: 'nombre',
   departamento: 'departamento'
 };
 
@@ -164,51 +164,54 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.UsuarioOrderByRelevanceFieldEnum = {
+  correo: 'correo',
+  nombre: 'nombre',
+  apellido: 'apellido',
+  contraseña: 'contraseña'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
 
-exports.Prisma.userOrderByRelevanceFieldEnum = {
-  name: 'name',
-  lastname: 'lastname',
-  email: 'email',
-  password: 'password'
-};
-
-exports.Prisma.empleadoOrderByRelevanceFieldEnum = {
-  photo: 'photo',
-  name: 'name',
-  lastname: 'lastname',
+exports.Prisma.EmpleadoOrderByRelevanceFieldEnum = {
+  dni: 'dni',
+  foto: 'foto',
+  nombre: 'nombre',
+  apellido: 'apellido',
   sexo: 'sexo',
   educacion: 'educacion',
+  telefono: 'telefono',
   direccion: 'direccion',
-  email: 'email',
-  cargo: 'cargo'
+  correo: 'correo',
+  sucursalRif: 'sucursalRif'
 };
 
-exports.Prisma.sucursalOrderByRelevanceFieldEnum = {
+exports.Prisma.SucursalOrderByRelevanceFieldEnum = {
+  rif: 'rif',
   estado: 'estado',
   municipio: 'municipio',
   parroquia: 'parroquia',
-  direccionsucursal: 'direccionsucursal'
+  direccion: 'direccion'
 };
 
-exports.Prisma.cargoOrderByRelevanceFieldEnum = {
-  cargo: 'cargo',
+exports.Prisma.CargoOrderByRelevanceFieldEnum = {
+  nombre: 'nombre',
   departamento: 'departamento'
 };
-exports.role = exports.$Enums.role = {
-  Admin: 'Admin',
-  employee: 'employee',
-  customer: 'customer'
+exports.Rol = exports.$Enums.Rol = {
+  ADMIN: 'ADMIN',
+  EMPLEADO: 'EMPLEADO',
+  CLIENTE: 'CLIENTE'
 };
 
 exports.Prisma.ModelName = {
-  user: 'user',
-  empleado: 'empleado',
-  sucursal: 'sucursal',
-  cargo: 'cargo'
+  Usuario: 'Usuario',
+  Empleado: 'Empleado',
+  Sucursal: 'Sucursal',
+  Cargo: 'Cargo'
 };
 
 /**

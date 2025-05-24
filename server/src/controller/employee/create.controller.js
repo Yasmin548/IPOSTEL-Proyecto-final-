@@ -1,6 +1,6 @@
-const { empleado } = require("../../config/prisma.config");
+import Prisma from "../../config/prisma.config";
 
-const createEmployee = async (req, res) => {
+const crearEmpleadoController = async (req, res) => {
   try {
     const {
       id,
@@ -26,7 +26,7 @@ const createEmployee = async (req, res) => {
       });
     }
 
-    const newUser = await empleado.create({
+    const newUser = await Prisma.empleado.create({
       id,
       photo,
       name,
@@ -49,3 +49,5 @@ const createEmployee = async (req, res) => {
     });
   } catch (error) {}
 };
+
+export default crearEmpleadoController;

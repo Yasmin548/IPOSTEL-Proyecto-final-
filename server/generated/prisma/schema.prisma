@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../generated/prisma"
@@ -14,48 +8,52 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//Así vas a crear las tablas, las haces con modelos, muy limpio, luego te explico
-model user {
-  id       Int    @id @default(autoincrement())
-  name     String
-  lastname String
-  email    String @unique
-  password String
-  role     role?  @default(customer)
+model Usuario {
+  correo      String @id
+  nombre      String
+  apellido    String
+  contraseña String
+  rol         Rol    @default(CLIENTE)
 }
 
-model empleado {
-  id           Int      @id @default(autoincrement())
-  photo        String?
-  name         String
-  lastname     String
-  birthday     DateTime
-  edad         Int
-  sexo         String
-  educacion    String
-  telefono     Int
-  direccion    String
-  email        String   @unique
-  fechaingreso DateTime
-  cargo        String
+model Empleado {
+  dni             String   @id
+  foto            String?
+  nombre          String
+  apellido        String
+  fechaNacimiento DateTime
+  edad            Int
+  sexo            String
+  educacion       String
+  telefono        String
+  direccion       String
+  correo          String   @unique
+  fechaIngreso    DateTime
+  cargoId         Int
+  sucursalRif     String
+
+  cargo    Cargo    @relation(fields: [cargoId], references: [id])
+  sucursal Sucursal @relation(fields: [sucursalRif], references: [rif])
 }
 
-model sucursal {
-  id                Int    @id @default(autoincrement())
-  estado            String
-  municipio         String
-  parroquia         String
-  direccionsucursal String
+model Sucursal {
+  rif       String     @id
+  estado    String
+  municipio String
+  parroquia String
+  direccion String
+  empleados Empleado[]
 }
 
-model cargo {
-  id           Int    @id @default(autoincrement())
-  cargo        String
+model Cargo {
+  id           Int        @id @default(autoincrement())
+  nombre       String
   departamento String
+  empleados    Empleado[]
 }
 
-enum role {
-  Admin
-  employee
-  customer
+enum Rol {
+  ADMIN
+  EMPLEADO
+  CLIENTE
 }

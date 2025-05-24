@@ -1,10 +1,10 @@
 //Declaro las librerías
-const express = require("express");
-const morgan = require("morgan");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const path = require("path");
-const indexRouter = require("./src/routes/index.route");
+import  express  from "express";
+import morgan from "morgan";
+import cors from "cors"
+import dotenv from "dotenv"
+import path from "path";
+import indexRouter from "./routes/index.route";
 
 //Inicialización de express (librería para crear API)
 const server = express();
@@ -37,3 +37,7 @@ server.use("/", indexRouter);
 server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+server.use((req, res)=>{
+  res.redirect('/')
+})

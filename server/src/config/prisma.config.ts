@@ -1,7 +1,7 @@
 //Importo el generador de consultas de Prisma
-const { PrismaClient } = require("../../generated/prisma");
+import { PrismaClient } from "../../generated/prisma";
 
 //Instancio al Prisma client
 const Prisma = new PrismaClient();
 
-module.exports = Prisma;
+export default Prisma;

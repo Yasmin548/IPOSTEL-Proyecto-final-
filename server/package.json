@@ -1,10 +1,11 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.ts",
+  
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.js",
+    "build:watch": "webpack --watch",
+    "dev": "concurrently \"npm run build:watch\" \"nodemon dist/server.cjs\"",
     "createDB": "node scripts/createDB.js",
     "deleteDB": "node scripts/deleteDB.js"
   },
@@ -13,6 +14,7 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "^6.8.1",
+    "concurrently": "^9.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
@@ -22,6 +24,9 @@
     "prisma": "^6.8.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.2",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^22.15.21",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
