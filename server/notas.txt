@@ -3,3 +3,5 @@
 - Creé un controlador para que si no existe la base de datos se cree automáticamente
 - Arreglé el como se sirven los archivos estáticos (problema de referencia a la ruta)
 
+24/05/2025
+-Terminé la migración de JavaScript a TypeScript, arreglé las vistas y creé el primer servicio
