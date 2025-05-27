@@ -1,28 +1,33 @@
-import Prisma from "../../config/prisma.config";
-import { Request, Response } from "express";
+import { empleadoListService } from "../../services/empleado.service";
+import { IFunctionResponse, TEmpleado } from "../../types/index.types";
+import { IEmpleadoController } from "../interface/index.interface";
 
-const employeeList = async (req:Request, res:Response) => {
-  try {
-    const response = await Prisma.empleado.findMany();
 
-     response.length > 0
-      ? res.status(200).json({
-          status: 200,
-          message: "Lista de empleados Obtenida",
-          data: response,
-        })
-      : res.status(200).json({
-          status: 200,
-          message: "No hay empleados registrados",
-        });
-  } catch (error) {
-    console.error("Error en el controlador de empleados", error);
-     res.status(500).json({
-      status: 500,
-      message: "No se ha podido obtener la lista de empleados",
-      error,
-    });
+export class EmpleadoController implements IEmpleadoController{
+
+  public async empleadoListController(): Promise<IFunctionResponse<TEmpleado[] | null>> {
+    try {
+      const response = await empleadoListService()
+      if(!response){
+       return{
+        status:204,
+        message:"No hay empleados registrados"
+       }
+      }
+
+      return{
+        status:201,
+        message:"Lista de Empleados Obtenida Correctamente",
+        data: response
+      }
+      
+    } catch (error) {
+      console.error('Error en Get empleado List controller', error);
+      return {
+        status: 500,
+        message: 'Error Obteniendo los Empleados',
+        error: error instanceof Error ? error.message : 'Unknown error',
+      }
+    }
   }
-};
-
-export default employeeList;
+}
