@@ -1,8 +1,9 @@
 import express from "express";
-import employeeList from "../controller/employee/List.controller";
+import empleadoController from "../controller/employee/empleado.controller";
 
 const empleadoRouter = express.Router();
 
-empleadoRouter.get("/", employeeList);
+const controller = new empleadoController()
+empleadoRouter.get("/", controller.empleadoListController());
 
 export default empleadoRouter;

@@ -2,7 +2,6 @@
   "name": "server",
   "version": "1.0.0",
   "main": "server.ts",
-  
   "scripts": {
     "build:watch": "webpack --watch",
     "dev": "concurrently \"npm run build:watch\" \"nodemon dist/server.cjs\"",
@@ -14,14 +13,18 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "^6.8.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
     "concurrently": "^9.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "mysql2": "^3.14.1",
     "nodemon": "^3.1.10",
-    "prisma": "^6.8.1"
+    "prisma": "^6.8.1",
+    "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.18",
