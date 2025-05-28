@@ -1,9 +1,14 @@
-import express from "express";
-import empleadoController from "../controller/employee/empleado.controller";
+import express, { Request, Response } from "express";
+import { EmpleadoController } from "../controller/employee/empleado.controller";
+import { sendResponse } from "../utils/sendResponse.util";
+
 
 const empleadoRouter = express.Router();
 
-const controller = new empleadoController()
-empleadoRouter.get("/", controller.empleadoListController());
+const controller = new EmpleadoController
+empleadoRouter.get("/", async(req:Request, res: Response)=>{
+    const response= await controller.empleadoListController()
+    sendResponse(res, response)
+});
 
 export default empleadoRouter;
