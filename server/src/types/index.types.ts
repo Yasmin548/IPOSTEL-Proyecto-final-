@@ -10,7 +10,7 @@ export type TCargo = Cargo
 export interface IFunctionResponse<T> {
     status: number,
     message: string,
-    error?: string,
+    error?: unknown,
     data?: T,
     token?: string
 }
