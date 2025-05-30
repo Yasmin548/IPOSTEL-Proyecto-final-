@@ -6,7 +6,9 @@ import { sendResponse } from "../utils/sendResponse.util";
 const empleadoRouter = express.Router();
 
 const controller = new EmpleadoController
-empleadoRouter.get("/", async(req:Request, res: Response)=>{
+
+empleadoRouter
+.get("/", async(req:Request, res: Response)=>{
     const response= await controller.empleadoListController()
     sendResponse(res, response)
 });

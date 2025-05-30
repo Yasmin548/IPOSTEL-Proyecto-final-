@@ -5,6 +5,6 @@ import empleadoRouter from "./employee.route";
 const indexRouter = express.Router();
 
 indexRouter.get("/", () => {});
-indexRouter.use("/employee", empleadoRouter);
+indexRouter.use("/empleados", empleadoRouter);
 
 export default indexRouter;
