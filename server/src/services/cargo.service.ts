@@ -14,3 +14,19 @@ export const createCargoService = async (cargo:TCargo)=>{
     return cargoData
 }
 
+
+export const findCargoByID = async (id:number)=>{
+    const cargoData = await Prisma.cargo.findUnique({
+        where:{ id : id}
+    })
+    return cargoData
+}
+
+
+export const findCargoByName = async (nombre : string)=>{
+    const cargoData = await Prisma.cargo.findFirst({
+        where:{ nombre : nombre}
+    })
+
+    return cargoData;
+}

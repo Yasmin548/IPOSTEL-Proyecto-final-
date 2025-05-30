@@ -14,5 +14,7 @@ export class cargoController implements ICargoController {
         })
     }
 
-    
+    public async createCargoController(cargo: TCargo): Promise<IFunctionResponse<TCargo>> {
+        
+    }
 }
