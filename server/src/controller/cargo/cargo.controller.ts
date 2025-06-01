@@ -1,12 +1,13 @@
-import { error } from "console";
-import { cargoListService, createCargoService, findCargoByID, findCargoByName } from "../../services/cargo.service";
+import { updateCargoDTO } from "../../DTO/cargo.dto";
+import { cargoListService, createCargoService, deleteCargoService, findCargoByIDService, findCargoByNameService, updateCargoService } from "../../services/cargo.service";
 import { IFunctionResponse, TCargo } from "../../types/index.types";
 import { safe } from "../../wrapper/safe.wrapper";
 import { ICargoController } from "../interface/index.interface";
-import { createBrotliDecompress } from "zlib";
+
 
 
 export class cargoController implements ICargoController {
+    //Get list
     public async cargoListController(): Promise<IFunctionResponse<TCargo[] | null>> {
         return safe(async()=>{
             return await cargoListService()
@@ -16,19 +17,11 @@ export class cargoController implements ICargoController {
         })
     }
 
+    //Create Cargo
     public async createCargoController(cargo: TCargo): Promise<IFunctionResponse<TCargo>> {
         return safe(async()=>{
-            const existingCargoID = await findCargoByID(cargo.id)
-
-            if(existingCargoID){
-                throw{
-                    status:409,
-                    message:"Ya existe un cargo con ese id",
-                    error:"Duplicado"
-                }
-            }
-
-            const existingCargoName = await findCargoByName(cargo.nombre)
+            
+            const existingCargoName = await findCargoByNameService(cargo.nombre)
 
             if(existingCargoName){
                  throw{
@@ -42,6 +35,60 @@ export class cargoController implements ICargoController {
         },{
             successStatus:201,
             successMessage:"Cargo Creado Correctamente"
+        })
+    }
+
+    public async searchCargoByIDController(id: number): Promise<IFunctionResponse<TCargo | null>> {
+        return safe(async()=>{
+            return await findCargoByIDService(id)
+        },{
+            successStatus:200,
+            successMessage:"Cargo encontrado"
+        })
+    }
+
+    public async searchCargoByNameController(name: string): Promise<IFunctionResponse<TCargo | null>> {
+        return safe(async()=>{
+            return await findCargoByNameService(name)
+        },{
+            successStatus:200,
+            successMessage:"Cargo encontrado"
+        })
+    }
+
+    public async updateCargoController(id: number, cargo: updateCargoDTO): Promise<IFunctionResponse<TCargo>> {
+        return safe(async()=>{
+            const existingCargoID = await findCargoByIDService(id)
+            if(!existingCargoID){
+                throw{
+                    status:400,
+                    message:`No existe un cargo con el id: ${id}`,
+                    error:`Bad request`
+                }
+            }
+
+            return await updateCargoService(id, cargo)
+        },{
+            successStatus:201,
+            successMessage:`Cargo actualizado correctamente`
+        })
+    }
+
+    public async deleteCargoController(id: number): Promise<IFunctionResponse<null>> {
+        return safe(async()=>{
+            const existingCargo = await findCargoByIDService(id)
+            if(!existingCargo){
+                throw{
+                    status:400,
+                    message:`No existe un cargo con el id ${id}`,
+                    error:`Bad Request`
+                }
+            }
+
+            return await deleteCargoService(id)
+        },{
+            successStatus:201,
+            successMessage:`Cargo eliminado Correctamente`
         })
     }
 }

@@ -196,7 +196,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Hugo Light\\Documents\\Programacion\\IPOSTEL-Proyecto-final-\\server\\generated\\prisma",
+      "value": "/home/moises/Desarrollo/Portfolio/IPOSTEL-Proyecto-final-/server/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -205,12 +205,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-1.1.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Hugo Light\\Documents\\Programacion\\IPOSTEL-Proyecto-final-\\server\\prisma\\schema.prisma",
+    "sourceFilePath": "/home/moises/Desarrollo/Portfolio/IPOSTEL-Proyecto-final-/server/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
