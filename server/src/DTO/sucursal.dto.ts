@@ -22,3 +22,20 @@ export class createSucursalDTO{
     @IsNotEmpty({message:`La dirección de la sucursal es obligatorio`})
     direccion!: string
 }
+
+export class updateSucursalDTO{
+    @IsString()
+    rif!:string;
+
+    @IsString()
+    estado!: string
+
+    @IsString()
+    municipio!:string
+
+    @IsString()
+    parroquia!: string
+
+    @IsString()
+    direccion!: string
+}
