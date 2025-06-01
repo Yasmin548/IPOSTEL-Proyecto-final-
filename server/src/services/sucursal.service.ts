@@ -29,3 +29,10 @@ export const updateSucursalService = async (rif:string, sucursal:updateSucursalD
     })
     return updatedSucursal
 }
+
+export const deleteSucursalService = async (rif:string)=>{
+    await Prisma.sucursal.delete({
+        where:{rif:rif}
+    })
+    return null
+}
