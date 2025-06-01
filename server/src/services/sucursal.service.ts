@@ -1,6 +1,6 @@
 import Prisma from "../config/prisma.config"
 import { createCargoDTO } from "../DTO/cargo.dto"
-import { createSucursalDTO } from "../DTO/sucursal.dto"
+import { createSucursalDTO, updateSucursalDTO } from "../DTO/sucursal.dto"
 
 
 export const sucursalListService = async ()=>{
@@ -22,3 +22,10 @@ export const createSucursalService = async (sucursal:createSucursalDTO)=>{
     return sucursalData
 }
 
+export const updateSucursalService = async (rif:string, sucursal:updateSucursalDTO)=>{
+    const updatedSucursal = await Prisma.sucursal.update({
+        where:{rif:rif},
+        data:sucursal
+    })
+    return updatedSucursal
+}
