@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors"
 import dotenv from "dotenv"
 import path from "path";
+import cookieParser from "cookie-parser"
 import indexRouter from "./routes/index.route";
 
 //Inicialización de express (librería para crear API)
@@ -23,6 +24,7 @@ const corsOptions = {
 server.use(express.json());
 server.use(morgan("tiny"));
 server.use(cors(corsOptions));
+server.use(cookieParser())
 
 //Declaro el puerto como variable de entorno, pero que use por defecto el 3001
 const PORT = process.env.PORT || 3001;
