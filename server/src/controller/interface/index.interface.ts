@@ -20,5 +20,5 @@ export interface ISucursalController{
     searchSucursalByIDController(rif:string):Promise<IFunctionResponse<TSucursal | null>>
     createSucursalController(sucursal:createSucursalDTO):Promise<IFunctionResponse<TSucursal>>
     updateSucursalController(rif:string, sucursal:updateSucursalDTO):Promise<IFunctionResponse<TSucursal>>
-    deleteSucursalController(rif:string):Promise<IFunctionResponse<TSucursal>>
+    deleteSucursalController(rif:string):Promise<IFunctionResponse<null>>
 }

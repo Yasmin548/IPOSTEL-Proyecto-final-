@@ -24,7 +24,7 @@ const corsOptions = {
 server.use(express.json());
 server.use(morgan("tiny"));
 server.use(cors(corsOptions));
-server.use(cookieParser())
+server.use(cookieParser())//Permite al server leer cookies
 
 //Declaro el puerto como variable de entorno, pero que use por defecto el 3001
 const PORT = process.env.PORT || 3001;
@@ -40,6 +40,7 @@ server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
+//404 handler
 server.use((req, res)=>{
   res.redirect('/')
 })

@@ -8,7 +8,7 @@
     "createDB": "node scripts/createDB.js",
     "deleteDB": "node scripts/deleteDB.js"
   },
-  "author": "",
+  "author": "Moisarm",
   "license": "ISC",
   "description": "",
   "dependencies": {
