@@ -1,5 +1,4 @@
 import Prisma from "../config/prisma.config"
-import { createCargoDTO } from "../DTO/cargo.dto"
 import { createSucursalDTO, updateSucursalDTO } from "../DTO/sucursal.dto"
 
 

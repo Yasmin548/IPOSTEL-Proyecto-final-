@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express"
-import { cargoController } from "../controller/cargo/cargo.controller"
+import { cargoController } from "../controller/cargo.controller"
 import { sendResponse } from "../utils/sendResponse.util"
 import { TCargo } from "../types/index.types"
 import { validateClass } from "../middlewares/validateClass.middleware"

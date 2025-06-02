@@ -12,7 +12,7 @@ model Usuario {
   correo     String   @id 
   nombre     String
   apellido   String
-  contraseña String
+  password String
   rol        Rol      @default(CLIENTE)
 }
 

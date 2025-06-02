@@ -1,8 +1,8 @@
-import { updateCargoDTO } from "../../DTO/cargo.dto";
-import { cargoListService, createCargoService, deleteCargoService, findCargoByIDService, findCargoByNameService, updateCargoService } from "../../services/cargo.service";
-import { IFunctionResponse, TCargo } from "../../types/index.types";
-import { safe } from "../../wrapper/safe.wrapper";
-import { ICargoController } from "../interface/index.interface";
+import { updateCargoDTO } from "../DTO/cargo.dto";
+import { cargoListService, createCargoService, deleteCargoService, findCargoByIDService, findCargoByNameService, updateCargoService } from "../services/cargo.service";
+import { IFunctionResponse, TCargo } from "../types/index.types";
+import { safe } from "../wrapper/safe.wrapper";
+import { ICargoController } from "./interface/index.interface";
 
 
 

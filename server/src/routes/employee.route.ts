@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { EmpleadoController } from "../controller/employee/empleado.controller";
+import { EmpleadoController } from "../controller/empleado.controller";
 import { sendResponse } from "../utils/sendResponse.util";
 
 

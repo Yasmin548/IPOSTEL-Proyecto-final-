@@ -1,7 +1,7 @@
-import { empleadoListService } from "../../services/empleado.service";
-import { IFunctionResponse, TEmpleado } from "../../types/index.types";
-import { safe } from "../../wrapper/safe.wrapper";
-import { IEmpleadoController } from "../interface/index.interface";
+import { empleadoListService } from "../services/empleado.service";
+import { IFunctionResponse, TEmpleado } from "../types/index.types";
+import { safe } from "../wrapper/safe.wrapper";
+import { IEmpleadoController } from "./interface/index.interface";
 
 
 export class EmpleadoController implements IEmpleadoController{
