@@ -9,11 +9,11 @@ datasource db {
 }
 
 model Usuario {
-  correo      String @id
-  nombre      String
-  apellido    String
-  contraseña String
-  rol         Rol    @default(CLIENTE)
+  correo   String @id
+  nombre   String
+  apellido String
+  password String
+  rol      Rol    @default(CLIENTE)
 }
 
 model Empleado {

@@ -1,6 +1,7 @@
 import { createCargoDTO, updateCargoDTO } from "../../DTO/cargo.dto";
 import { createSucursalDTO, updateSucursalDTO } from "../../DTO/sucursal.dto";
-import { IFunctionResponse, TCargo, TEmpleado, TSucursal } from "../../types/index.types";
+import { createUserDTO } from "../../DTO/user.dto";
+import { IFunctionResponse, TCargo, TEmpleado, TSucursal, TUsuario } from "../../types/index.types";
 
 export interface IEmpleadoController{
     empleadoListController():Promise <IFunctionResponse<TEmpleado[] | null>>
@@ -21,4 +22,8 @@ export interface ISucursalController{
     createSucursalController(sucursal:createSucursalDTO):Promise<IFunctionResponse<TSucursal>>
     updateSucursalController(rif:string, sucursal:updateSucursalDTO):Promise<IFunctionResponse<TSucursal>>
     deleteSucursalController(rif:string):Promise<IFunctionResponse<null>>
+}
+
+export interface IAuthController{
+    createUserController(user:createUserDTO):Promise<IFunctionResponse<TUsuario>>
 }

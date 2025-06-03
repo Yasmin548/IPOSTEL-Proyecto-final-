@@ -1203,7 +1203,7 @@ export namespace Prisma {
     correo: string | null
     nombre: string | null
     apellido: string | null
-    contraseña: string | null
+    password: string | null
     rol: $Enums.Rol | null
   }
 
@@ -1211,7 +1211,7 @@ export namespace Prisma {
     correo: string | null
     nombre: string | null
     apellido: string | null
-    contraseña: string | null
+    password: string | null
     rol: $Enums.Rol | null
   }
 
@@ -1219,7 +1219,7 @@ export namespace Prisma {
     correo: number
     nombre: number
     apellido: number
-    contraseña: number
+    password: number
     rol: number
     _all: number
   }
@@ -1229,7 +1229,7 @@ export namespace Prisma {
     correo?: true
     nombre?: true
     apellido?: true
-    contraseña?: true
+    password?: true
     rol?: true
   }
 
@@ -1237,7 +1237,7 @@ export namespace Prisma {
     correo?: true
     nombre?: true
     apellido?: true
-    contraseña?: true
+    password?: true
     rol?: true
   }
 
@@ -1245,7 +1245,7 @@ export namespace Prisma {
     correo?: true
     nombre?: true
     apellido?: true
-    contraseña?: true
+    password?: true
     rol?: true
     _all?: true
   }
@@ -1326,7 +1326,7 @@ export namespace Prisma {
     correo: string
     nombre: string
     apellido: string
-    contraseña: string
+    password: string
     rol: $Enums.Rol
     _count: UsuarioCountAggregateOutputType | null
     _min: UsuarioMinAggregateOutputType | null
@@ -1351,7 +1351,7 @@ export namespace Prisma {
     correo?: boolean
     nombre?: boolean
     apellido?: boolean
-    contraseña?: boolean
+    password?: boolean
     rol?: boolean
   }, ExtArgs["result"]["usuario"]>
 
@@ -1361,11 +1361,11 @@ export namespace Prisma {
     correo?: boolean
     nombre?: boolean
     apellido?: boolean
-    contraseña?: boolean
+    password?: boolean
     rol?: boolean
   }
 
-  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"correo" | "nombre" | "apellido" | "contraseña" | "rol", ExtArgs["result"]["usuario"]>
+  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"correo" | "nombre" | "apellido" | "password" | "rol", ExtArgs["result"]["usuario"]>
 
   export type $UsuarioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Usuario"
@@ -1374,7 +1374,7 @@ export namespace Prisma {
       correo: string
       nombre: string
       apellido: string
-      contraseña: string
+      password: string
       rol: $Enums.Rol
     }, ExtArgs["result"]["usuario"]>
     composites: {}
@@ -1748,7 +1748,7 @@ export namespace Prisma {
     readonly correo: FieldRef<"Usuario", 'String'>
     readonly nombre: FieldRef<"Usuario", 'String'>
     readonly apellido: FieldRef<"Usuario", 'String'>
-    readonly contraseña: FieldRef<"Usuario", 'String'>
+    readonly password: FieldRef<"Usuario", 'String'>
     readonly rol: FieldRef<"Usuario", 'Rol'>
   }
     
@@ -5081,7 +5081,7 @@ export namespace Prisma {
     correo: 'correo',
     nombre: 'nombre',
     apellido: 'apellido',
-    contraseña: 'contraseña',
+    password: 'password',
     rol: 'rol'
   };
 
@@ -5140,7 +5140,7 @@ export namespace Prisma {
     correo: 'correo',
     nombre: 'nombre',
     apellido: 'apellido',
-    contraseña: 'contraseña'
+    password: 'password'
   };
 
   export type UsuarioOrderByRelevanceFieldEnum = (typeof UsuarioOrderByRelevanceFieldEnum)[keyof typeof UsuarioOrderByRelevanceFieldEnum]
@@ -5239,7 +5239,7 @@ export namespace Prisma {
     correo?: StringFilter<"Usuario"> | string
     nombre?: StringFilter<"Usuario"> | string
     apellido?: StringFilter<"Usuario"> | string
-    contraseña?: StringFilter<"Usuario"> | string
+    password?: StringFilter<"Usuario"> | string
     rol?: EnumRolFilter<"Usuario"> | $Enums.Rol
   }
 
@@ -5247,7 +5247,7 @@ export namespace Prisma {
     correo?: SortOrder
     nombre?: SortOrder
     apellido?: SortOrder
-    contraseña?: SortOrder
+    password?: SortOrder
     rol?: SortOrder
     _relevance?: UsuarioOrderByRelevanceInput
   }
@@ -5259,7 +5259,7 @@ export namespace Prisma {
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
     nombre?: StringFilter<"Usuario"> | string
     apellido?: StringFilter<"Usuario"> | string
-    contraseña?: StringFilter<"Usuario"> | string
+    password?: StringFilter<"Usuario"> | string
     rol?: EnumRolFilter<"Usuario"> | $Enums.Rol
   }, "correo">
 
@@ -5267,7 +5267,7 @@ export namespace Prisma {
     correo?: SortOrder
     nombre?: SortOrder
     apellido?: SortOrder
-    contraseña?: SortOrder
+    password?: SortOrder
     rol?: SortOrder
     _count?: UsuarioCountOrderByAggregateInput
     _max?: UsuarioMaxOrderByAggregateInput
@@ -5281,7 +5281,7 @@ export namespace Prisma {
     correo?: StringWithAggregatesFilter<"Usuario"> | string
     nombre?: StringWithAggregatesFilter<"Usuario"> | string
     apellido?: StringWithAggregatesFilter<"Usuario"> | string
-    contraseña?: StringWithAggregatesFilter<"Usuario"> | string
+    password?: StringWithAggregatesFilter<"Usuario"> | string
     rol?: EnumRolWithAggregatesFilter<"Usuario"> | $Enums.Rol
   }
 
@@ -5499,7 +5499,7 @@ export namespace Prisma {
     correo: string
     nombre: string
     apellido: string
-    contraseña: string
+    password: string
     rol?: $Enums.Rol
   }
 
@@ -5507,7 +5507,7 @@ export namespace Prisma {
     correo: string
     nombre: string
     apellido: string
-    contraseña: string
+    password: string
     rol?: $Enums.Rol
   }
 
@@ -5515,7 +5515,7 @@ export namespace Prisma {
     correo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
-    contraseña?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     rol?: EnumRolFieldUpdateOperationsInput | $Enums.Rol
   }
 
@@ -5523,7 +5523,7 @@ export namespace Prisma {
     correo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
-    contraseña?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     rol?: EnumRolFieldUpdateOperationsInput | $Enums.Rol
   }
 
@@ -5531,7 +5531,7 @@ export namespace Prisma {
     correo: string
     nombre: string
     apellido: string
-    contraseña: string
+    password: string
     rol?: $Enums.Rol
   }
 
@@ -5539,7 +5539,7 @@ export namespace Prisma {
     correo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
-    contraseña?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     rol?: EnumRolFieldUpdateOperationsInput | $Enums.Rol
   }
 
@@ -5547,7 +5547,7 @@ export namespace Prisma {
     correo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
-    contraseña?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     rol?: EnumRolFieldUpdateOperationsInput | $Enums.Rol
   }
 
@@ -5803,7 +5803,7 @@ export namespace Prisma {
     correo?: SortOrder
     nombre?: SortOrder
     apellido?: SortOrder
-    contraseña?: SortOrder
+    password?: SortOrder
     rol?: SortOrder
   }
 
@@ -5811,7 +5811,7 @@ export namespace Prisma {
     correo?: SortOrder
     nombre?: SortOrder
     apellido?: SortOrder
-    contraseña?: SortOrder
+    password?: SortOrder
     rol?: SortOrder
   }
 
@@ -5819,7 +5819,7 @@ export namespace Prisma {
     correo?: SortOrder
     nombre?: SortOrder
     apellido?: SortOrder
-    contraseña?: SortOrder
+    password?: SortOrder
     rol?: SortOrder
   }
 
