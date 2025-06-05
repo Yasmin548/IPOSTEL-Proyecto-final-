@@ -26,5 +26,5 @@ export interface ISucursalController{
 
 export interface IAuthController{
     createUserController(user:createUserDTO):Promise<IFunctionResponse<TUsuario>>
-    loginUserController(loginData:logUserDTO):Promise<IFunctionResponse<{user:Partial<TUsuario>}>>
+    loginUserController(loginData:logUserDTO):Promise<IFunctionResponse<{user:Partial<TUsuario>, token:string}>>
 }

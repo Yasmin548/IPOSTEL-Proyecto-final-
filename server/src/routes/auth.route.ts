@@ -16,6 +16,20 @@ authRouter
 .post('/login', validateClass(logUserDTO), async(req:Request, res:Response)=>{
     const loginData = req.body
     const response = await controller.loginUserController(loginData)
+    
+    /*const cookieConfig={
+        httpOnly: true,//Hace que la cookie sólo se acceda desde el server
+        sameSite: "strict",//Cookie sólo se accede desde el mismo dominio
+        // maxAge:1000*60*60 Le da tiempo a la cookie pero ya se lo di al token
+    }*/
+
+    //Generamos la cookie
+    if(response.data?.token){
+        res.cookie("Acces_Token", response.token, {
+            httpOnly: true,
+            sameSite: "strict",
+        })
+    }
     sendResponse(res, response)
 })
 

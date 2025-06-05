@@ -3,6 +3,7 @@ import { registerUserService } from "../services/auth.service";
 import { findUserByEmail } from "../services/user.service";
 import { IFunctionResponse, TUsuario } from "../types/index.types";
 import { comparePassword } from "../utils/hash.utils";
+import { Token } from "../utils/jwt.utils";
 import { safe } from "../wrapper/safe.wrapper";
 import { IAuthController } from "./interface/index.interface";
 
@@ -25,7 +26,7 @@ export class AuthController implements IAuthController{
         })
     }
 
-    public async loginUserController(loginData: logUserDTO): Promise<IFunctionResponse<{ user: Partial<TUsuario>; }>> {
+    public async loginUserController(loginData: logUserDTO): Promise<IFunctionResponse<{ user: Partial<TUsuario>; token:string }>> {
         return safe(async()=>{
             const existingUser = await findUserByEmail(loginData.correo)
             if(!existingUser){
@@ -46,12 +47,18 @@ export class AuthController implements IAuthController{
                 }
             }
 
+            const token=  Token({
+                user:existingUser.nombre,
+                email:existingUser.correo,
+                rol:existingUser.rol
+            })
+
             const publicUser: Partial<TUsuario> = {
                 correo: existingUser.correo,
                 rol: existingUser.rol
             }
 
-            return {user: publicUser}
+            return {user: publicUser, token:token}
 
 
         },{
