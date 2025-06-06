@@ -13,3 +13,7 @@ interface payload {
 export const Token = (payload: payload): string => {
   return jwt.sign(payload, SECRET, { expiresIn: "30m" });
 }
+
+export const verifyData = (token:string)=>{
+  return jwt.verify(token,SECRET) as payload
+}
