@@ -25,7 +25,7 @@ authRouter
 
     //Generamos la cookie
     if(response.data?.token){
-        res.cookie("Acces_Token", response.token, {
+        res.cookie("Acces-Token", response.data.token, {
             httpOnly: true,
             sameSite: "strict",
         })
