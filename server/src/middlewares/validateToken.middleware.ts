@@ -30,4 +30,6 @@ export const verifyUser = (req:Request, res:Response, next:NextFunction)=>{
             sameSite: "strict",
         })
     }
+
+    next()
 }
