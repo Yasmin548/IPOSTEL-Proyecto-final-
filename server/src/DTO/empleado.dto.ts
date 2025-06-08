@@ -54,3 +54,35 @@ export class createEmpleadoDTO{
     @IsNotEmpty({message:"EL rif de su sucursal es obligatorio"})
     sucursalRif!:     string
 }
+
+export class updateEmpleadoDTO{
+    @IsString()
+    dni!:             string 
+    
+    @IsString()
+    foto!:            string
+    @IsString()
+    nombre!:          string
+    @IsString()
+    apellido!:        string
+    @IsDate()
+    fechaNacimiento!: Date
+    @IsNumber()
+    edad!:            number
+    @IsString()
+    sexo!:            string    
+    @IsString()
+    educacion!:       string
+    @IsString()
+    telefono!:        string
+    @IsString()
+    direccion!:       string
+    @IsEmail()
+    correo!:          string   
+    @IsDate()
+    fechaIngreso!:    Date
+    @IsNumber()
+    cargoId!:         number
+    @IsString()
+    sucursalRif!:     string
+}

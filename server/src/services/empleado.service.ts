@@ -1,5 +1,5 @@
 import Prisma from "../config/prisma.config"
-import { createEmpleadoDTO } from "../DTO/empleado.dto"
+import { createEmpleadoDTO, updateEmpleadoDTO } from "../DTO/empleado.dto"
 
 
 export const empleadoListService = async ()=>{
@@ -20,4 +20,12 @@ export const searchEmpleadoByIDService = async(dni:string)=>{
                 where:{dni:dni}
         })
         return empleadoData
+}
+
+export const updateEmpleadoService = async(dni:string, empleado:updateEmpleadoDTO)=>{
+        const empleadoUpdated = await Prisma.empleado.update({
+                where:{dni: dni},
+                data:empleado
+        })
+        return empleadoUpdated
 }
