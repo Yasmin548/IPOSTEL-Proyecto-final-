@@ -14,3 +14,10 @@ export const createEmpleadoService = async(empleado:createEmpleadoDTO)=>{
 
         return empleadoData
 }
+
+export const searchEmpleadoByIDService = async(dni:string)=>{
+        const empleadoData= await Prisma.empleado.findFirst({
+                where:{dni:dni}
+        })
+        return empleadoData
+}
