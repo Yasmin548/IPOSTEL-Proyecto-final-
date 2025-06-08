@@ -9,7 +9,11 @@ export const empleadoListService = async ()=>{
 
 export const createEmpleadoService = async(empleado:createEmpleadoDTO)=>{
         const empleadoData = await Prisma.empleado.create({
-                data:empleado
+                data:{
+                   ...empleado,
+                   fechaNacimiento: new Date(empleado.fechaNacimiento),
+                   fechaIngreso:new Date(empleado.fechaIngreso)
+                } 
         })
 
         return empleadoData
