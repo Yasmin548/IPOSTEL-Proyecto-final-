@@ -1,10 +1,15 @@
 import { createCargoDTO, updateCargoDTO } from "../../DTO/cargo.dto";
+import { createEmpleadoDTO, updateEmpleadoDTO } from "../../DTO/empleado.dto";
 import { createSucursalDTO, updateSucursalDTO } from "../../DTO/sucursal.dto";
 import { createUserDTO, logUserDTO } from "../../DTO/user.dto";
 import { IFunctionResponse, TCargo, TEmpleado, TSucursal, TUsuario } from "../../types/index.types";
 
 export interface IEmpleadoController{
     empleadoListController():Promise <IFunctionResponse<TEmpleado[] | null>>
+    searchEmpleadoByIDController(dni:string):Promise<IFunctionResponse<TEmpleado | null>>
+    createEmpleadoController(empleado:createEmpleadoDTO):Promise<IFunctionResponse<TEmpleado>>
+    updateEmpleadoController(empleado:updateEmpleadoDTO):Promise<IFunctionResponse<TEmpleado>>
+    deleteEmpleadoController(dni:string):Promise<IFunctionResponse<null>>
 }
 
 export interface ICargoController{
