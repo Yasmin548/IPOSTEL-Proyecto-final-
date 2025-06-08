@@ -1,5 +1,5 @@
 import express from "express";
-import empleadoRouter from "./employee.route";
+import empleadoRouter from "./empleado.route";
 import { cargoRouter } from "./cargo.route";
 import sucursalRouter from "./sucursal.route";
 import authRouter from "./auth.route";
