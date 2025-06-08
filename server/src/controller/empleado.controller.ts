@@ -1,4 +1,5 @@
-import { empleadoListService } from "../services/empleado.service";
+import { updateEmpleadoDTO } from "../DTO/empleado.dto";
+import { empleadoListService, searchEmpleadoByIDService, updateEmpleadoService } from "../services/empleado.service";
 import { IFunctionResponse, TEmpleado } from "../types/index.types";
 import { safe } from "../wrapper/safe.wrapper";
 import { IEmpleadoController } from "./interface/index.interface";
@@ -16,5 +17,43 @@ export class EmpleadoController implements IEmpleadoController{
         successMessage: 'Lista de Empleados',
       },
     );
+  }
+
+  public async searchEmpleadoByIDController(dni: string): Promise<IFunctionResponse<TEmpleado | null>> {
+    return safe(async ()=>{
+      const empleado = await searchEmpleadoByIDService(dni)
+
+      if(!empleado){
+        throw{
+          status:404,
+          message:"No existe el empleado",
+          error:"Not found"
+        }
+      }
+      return empleado
+    },{
+      successStatus:200,
+      successMessage:"Empleado encontrado"
+    })
+  }
+
+  public async updateEmpleadoController(dni:string, empleado: updateEmpleadoDTO): Promise<IFunctionResponse<TEmpleado>> {
+    return safe(async()=>{
+      const existingEmpleado = await searchEmpleadoByIDService(dni)
+
+      if (!existingEmpleado){
+        throw{
+          status:404,
+          message:"No se encontró el empleado",
+          error:"Not found"
+        }
+      }
+
+      return await updateEmpleadoService(dni, empleado)
+
+    },{
+      successStatus:202,
+      successMessage:"Empleado actualizado"
+    })
   }
 }

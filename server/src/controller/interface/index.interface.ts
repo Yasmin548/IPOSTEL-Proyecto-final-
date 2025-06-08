@@ -8,7 +8,7 @@ export interface IEmpleadoController{
     empleadoListController():Promise <IFunctionResponse<TEmpleado[] | null>>
     searchEmpleadoByIDController(dni:string):Promise<IFunctionResponse<TEmpleado | null>>
     createEmpleadoController(empleado:createEmpleadoDTO):Promise<IFunctionResponse<TEmpleado>>
-    updateEmpleadoController(empleado:updateEmpleadoDTO):Promise<IFunctionResponse<TEmpleado>>
+    updateEmpleadoController(dni:string, empleado:updateEmpleadoDTO):Promise<IFunctionResponse<TEmpleado>>
     deleteEmpleadoController(dni:string):Promise<IFunctionResponse<null>>
 }
 
