@@ -1,8 +1,11 @@
+import { error } from "console";
 import { createEmpleadoDTO, updateEmpleadoDTO } from "../DTO/empleado.dto";
 import { createEmpleadoService, deleteEmpleadoService, empleadoListService, searchEmpleadoByIDService, updateEmpleadoService } from "../services/empleado.service";
 import { IFunctionResponse, TEmpleado } from "../types/index.types";
 import { safe } from "../wrapper/safe.wrapper";
 import { IEmpleadoController } from "./interface/index.interface";
+import { findSucursalByID } from "../services/sucursal.service";
+import { findCargoByIDService } from "../services/cargo.service";
 
 
 export class EmpleadoController implements IEmpleadoController{
@@ -10,10 +13,18 @@ export class EmpleadoController implements IEmpleadoController{
   public async empleadoListController(): Promise<IFunctionResponse<TEmpleado[] | null>> {
   return safe(
       async () => {
-        return await empleadoListService();
+        const empleados= await empleadoListService();
+        if(!empleados){
+          throw{
+            status:404,
+            message:"No hay empleados registrados",
+            error:"No content"
+          }
+        }
+        return empleados
       },
       {
-        successStatus: 201,
+        successStatus: 200,
         successMessage: 'Lista de Empleados',
       },
     );
@@ -49,6 +60,25 @@ export class EmpleadoController implements IEmpleadoController{
         }
       }
 
+      const existingSucursal = await findSucursalByID(empleado.sucursalRif)
+      
+      if(!existingSucursal){
+        throw{
+          status:400,
+          message:"No existe la sucursal",
+          error:"Not found"
+        }
+      }
+
+      const existingCargo = await findCargoByIDService(empleado.cargoId)
+
+      if(!existingCargo){
+        throw{
+          status:400,
+          message:"No existe el cargo",
+          error:"Not found"
+        }
+      }
       return await createEmpleadoService(empleado)
     },{
       successStatus:201,
