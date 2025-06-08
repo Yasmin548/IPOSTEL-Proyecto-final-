@@ -1,0 +1,56 @@
+import { IsDate, IsEmail, IsNotEmpty, IsNumber, IsPositive, IsString } from "class-validator"
+
+export class createEmpleadoDTO{
+    @IsString()
+    @IsNotEmpty({message:"EL C.I es obligatorio"})
+    dni!:             string 
+    
+    
+    foto!:            string
+
+    @IsString()
+    @IsNotEmpty({message:"EL nombre es obligatorio"})
+    nombre!:          string
+
+    @IsString()
+    @IsNotEmpty({message:"EL apellido es obligatorio"})
+    apellido!:        string
+
+    @IsDate()
+    fechaNacimiento!: Date
+
+    @IsNumber()
+    @IsPositive()
+    edad!:            number
+
+    @IsString()
+    @IsNotEmpty({message:"EL sexo es obligatorio"})
+    sexo!:            string    
+
+    @IsString()
+    @IsNotEmpty({message:"EL nivel de educación es obligatorio"})
+    educacion!:       string
+    
+    @IsString()
+    @IsNotEmpty({message:"EL teléfono es obligatorio"})
+    telefono!:        string
+
+    @IsString()
+    @IsNotEmpty({message:"La dirección es obligatoria"})
+    direccion!:       string
+
+    @IsEmail()
+    @IsNotEmpty({message:"El correo es obligatorio"})
+    correo!:          string   
+
+    @IsDate()
+    fechaIngreso!:    Date
+
+    @IsNumber()
+    @IsNotEmpty({message:"El cargo es obligatorio"})
+    cargoId!:         number
+
+    @IsString()
+    @IsNotEmpty({message:"EL rif de su sucursal es obligatorio"})
+    sucursalRif!:     string
+}
