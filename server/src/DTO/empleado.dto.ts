@@ -1,4 +1,4 @@
-import { IsDate, IsEmail, IsNotEmpty, IsNumber, IsPositive, IsString } from "class-validator"
+import { IsDate, IsEmail, IsISO8601, IsNotEmpty, IsNumber, IsPositive, IsString } from "class-validator"
 
 export class createEmpleadoDTO{
     @IsString()
@@ -16,8 +16,8 @@ export class createEmpleadoDTO{
     @IsNotEmpty({message:"EL apellido es obligatorio"})
     apellido!:        string
 
-    @IsDate()
-    fechaNacimiento!: Date
+    @IsISO8601()
+    fechaNacimiento!: string
 
     @IsNumber()
     @IsPositive()
@@ -43,8 +43,8 @@ export class createEmpleadoDTO{
     @IsNotEmpty({message:"El correo es obligatorio"})
     correo!:          string   
 
-    @IsDate()
-    fechaIngreso!:    Date
+    @IsISO8601()
+    fechaIngreso!:    string
 
     @IsNumber()
     @IsNotEmpty({message:"El cargo es obligatorio"})
@@ -79,7 +79,7 @@ export class updateEmpleadoDTO{
     direccion!:       string
     @IsEmail()
     correo!:          string   
-    @IsDate()
+    @IsISO8601()
     fechaIngreso!:    Date
     @IsNumber()
     cargoId!:         number
