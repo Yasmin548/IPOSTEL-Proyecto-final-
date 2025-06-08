@@ -29,3 +29,10 @@ export const updateEmpleadoService = async(dni:string, empleado:updateEmpleadoDT
         })
         return empleadoUpdated
 }
+
+export const deleteEmpleadoService = async(dni:string)=>{
+        await Prisma.empleado.delete({
+                where:{dni:dni}
+        })
+        return null;
+}
