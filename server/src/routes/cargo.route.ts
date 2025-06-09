@@ -12,8 +12,19 @@ const controller = new cargoController
 cargoRouter
 //Obtiene todos los cargos
 .get('/', async (req:Request, res:Response)=>{
-    const response = await controller.cargoListController()
-    sendResponse(res, response)
+    // Si hay parámetros de paginación, usar la versión paginada
+    if (req.query.page || req.query.limit) {
+        const response = await controller.cargoListPaginatedController(req);
+        sendResponse(res, response);
+    } else {
+        const response = await controller.cargoListController();
+        sendResponse(res, response);
+    }
+})
+//Obtiene cargos paginados
+.get('/paginated', async (req:Request, res:Response)=>{
+    const response = await controller.cargoListPaginatedController(req);
+    sendResponse(res, response);
 })
 //Crea un cargo
 .post('/', validateClass(createCargoDTO), async (req:Request, res:Response)=>{

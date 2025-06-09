@@ -7,6 +7,34 @@ export const sucursalListService = async ()=>{
     return sucursalData.length>0? sucursalData : null
 }
 
+export const sucursalListPaginatedService = async (page: number = 1, limit: number = 10) => {
+    const skip = (page - 1) * limit;
+    
+    // Obtener el total de registros
+    const total = await Prisma.sucursal.count();
+    
+    // Obtener las sucursales paginadas
+    const sucursales = await Prisma.sucursal.findMany({
+        skip,
+        take: limit
+    });
+    
+    // Calcular información de paginación
+    const totalPages = Math.ceil(total / limit);
+    
+    return {
+        data: sucursales,
+        pagination: {
+            total,
+            page,
+            limit,
+            totalPages,
+            hasNextPage: page < totalPages,
+            hasPrevPage: page > 1
+        }
+    };
+}
+
 export const findSucursalByID= async (rif: string)=>{
     const sucursalData= await Prisma.sucursal.findUnique({
         where:{rif:rif}

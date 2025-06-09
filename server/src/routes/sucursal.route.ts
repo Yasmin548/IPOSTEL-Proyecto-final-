@@ -10,8 +10,19 @@ const controller = new sucursalController()
 sucursalRouter
 //Lista de Sucursales
 .get('/', async(req:Request, res:Response)=>{
-    const response= await controller.sucursalListController()
-    sendResponse(res, response)
+    // Si hay parámetros de paginación, usar la versión paginada
+    if (req.query.page || req.query.limit) {
+        const response = await controller.sucursalListPaginatedController(req);
+        sendResponse(res, response);
+    } else {
+        const response = await controller.sucursalListController();
+        sendResponse(res, response);
+    }
+})
+//Lista de Sucursales Paginada
+.get('/paginated', async(req:Request, res:Response)=>{
+    const response = await controller.sucursalListPaginatedController(req);
+    sendResponse(res, response);
 })
 //Busca Una Sucursal
 .get('/:rif', async(req:Request, res:Response)=>{

@@ -2,10 +2,47 @@ import Prisma from "../config/prisma.config"
 import { createEmpleadoDTO, updateEmpleadoDTO } from "../DTO/empleado.dto"
 
 
-export const empleadoListService = async ()=>{
-        const empleadosData = await Prisma.empleado.findMany()
-        return empleadosData.length>0? empleadosData : null
-}   
+export const empleadoListService = async (page?: number, limit?: number) => {
+    const empleadosData = await Prisma.empleado.findMany({
+        include: {
+            cargo: true,
+            sucursal: true
+        }
+    });
+    return empleadosData.length > 0 ? empleadosData : null;
+}
+
+export const empleadoListPaginatedService = async (page: number = 1, limit: number = 10) => {
+    const skip = (page - 1) * limit;
+    
+    // Obtener el total de registros
+    const total = await Prisma.empleado.count();
+    
+    // Obtener los empleados paginados
+    const empleados = await Prisma.empleado.findMany({
+        skip,
+        take: limit,
+        include: {
+            cargo: true,
+            sucursal: true
+        }
+    });
+    
+    // Calcular información de paginación
+    const totalPages = Math.ceil(total / limit);
+    
+    return {
+        data: empleados,
+        pagination: {
+            total,
+            page,
+            limit,
+            totalPages,
+            hasNextPage: page < totalPages,
+            hasPrevPage: page > 1
+        }
+    };
+}
 
 export const createEmpleadoService = async(empleado:createEmpleadoDTO)=>{
         const empleadoData = await Prisma.empleado.create({

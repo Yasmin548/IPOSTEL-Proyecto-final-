@@ -1,5 +1,5 @@
 import { createSucursalDTO, updateSucursalDTO } from "../DTO/sucursal.dto";
-import { createSucursalService, deleteSucursalService, findSucursalByID, sucursalListService, updateSucursalService } from "../services/sucursal.service";
+import { createSucursalService, deleteSucursalService, findSucursalByID, sucursalListPaginatedService, sucursalListService, updateSucursalService } from "../services/sucursal.service";
 import { IFunctionResponse, TSucursal } from "../types/index.types";
 import { safe } from "../wrapper/safe.wrapper";
 import { ISucursalController } from "./interface/index.interface";
@@ -10,7 +10,31 @@ export class sucursalController implements ISucursalController{
             return await sucursalListService()
         },{
             successStatus:200,
-            successMessage:`Lista de Sucursales`
+            successMessage:`Lista de Sucursales`
+        })
+    }
+    
+    public async sucursalListPaginatedController(req: any): Promise<IFunctionResponse<any>> {
+        return safe(async()=>{
+            // Obtener parámetros de paginación de la query
+            const page = req.query.page ? parseInt(req.query.page) : 1;
+            const limit = req.query.limit ? parseInt(req.query.limit) : 10;
+            
+            // Obtener sucursales paginadas
+            const result = await sucursalListPaginatedService(page, limit);
+            
+            if (!result.data || result.data.length === 0) {
+                throw {
+                    status: 404,
+                    message: "No hay sucursales registradas",
+                    error: "No content"
+                }
+            }
+            
+            return result;
+        },{
+            successStatus:200,
+            successMessage:`Lista de Sucursales Paginada`
         })
     }
 

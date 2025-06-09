@@ -6,6 +6,7 @@ import { IFunctionResponse, TCargo, TEmpleado, TSucursal, TUsuario } from "../..
 
 export interface IEmpleadoController{
     empleadoListController():Promise <IFunctionResponse<TEmpleado[] | null>>
+    empleadoListPaginatedController(req: any):Promise <IFunctionResponse<any>>
     searchEmpleadoByIDController(dni:string):Promise<IFunctionResponse<TEmpleado | null>>
     createEmpleadoController(empleado:createEmpleadoDTO):Promise<IFunctionResponse<TEmpleado>>
     updateEmpleadoController(dni:string, empleado:updateEmpleadoDTO):Promise<IFunctionResponse<TEmpleado>>
@@ -14,6 +15,7 @@ export interface IEmpleadoController{
 
 export interface ICargoController{
     cargoListController():Promise <IFunctionResponse<TCargo[] | null>>
+    cargoListPaginatedController(req: any):Promise <IFunctionResponse<any>>
     createCargoController(cargo:createCargoDTO):Promise<IFunctionResponse<TCargo>>
     searchCargoByIDController(id:number):Promise<IFunctionResponse<TCargo | null>>
     searchCargoByNameController(name:string):Promise<IFunctionResponse<TCargo | null>>
@@ -23,6 +25,7 @@ export interface ICargoController{
 
 export interface ISucursalController{
     sucursalListController():Promise<IFunctionResponse<TSucursal[] | null>>
+    sucursalListPaginatedController(req: any):Promise<IFunctionResponse<any>>
     searchSucursalByIDController(rif:string):Promise<IFunctionResponse<TSucursal | null>>
     createSucursalController(sucursal:createSucursalDTO):Promise<IFunctionResponse<TSucursal>>
     updateSucursalController(rif:string, sucursal:updateSucursalDTO):Promise<IFunctionResponse<TSucursal>>
