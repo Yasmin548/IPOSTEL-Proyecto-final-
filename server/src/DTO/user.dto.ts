@@ -31,3 +31,24 @@ export class logUserDTO{
     @IsString()
     password!: string
 }
+
+
+export class updateUserDTO{
+    @IsString()
+    password!: string
+}
+
+export class adminUpdateUserDTO{
+    @IsEmail()
+    correo!:     string
+
+    
+    @IsString()
+    nombre!:     string
+
+    @IsString()
+    apellido!:   string
+
+    @IsIn([`CLIENTE`,`EMPLEADO`, `ADMIN`])
+    rol!: `CLIENTE`|`EMPLEADO`| `ADMIN`
+}
