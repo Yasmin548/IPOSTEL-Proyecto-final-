@@ -18,9 +18,7 @@ body {
 }
 
 .header {
-    background-image: linear-gradient( rgb(171, 235, 198),
-   rgb(133, 193, 233)),
-    url(../imagenes/marca\ de\ agua.jpg);
+background-image: linear-gradient(rgba(113, 236, 245, 0.753),rgba(179, 218, 245, 0.733)), url(../imagenes/marca\ de\ agua.jpg);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -66,7 +64,7 @@ body {
 }
 
 .menu .navbar ul li a:hover {
-    color:rgb(90, 196, 238);
+    color:rgb(90, 137, 238);
 }
 
 #menu {
@@ -295,7 +293,7 @@ p {
 
 .footer {
     padding: 10px 0;
-    background-color: #abebc6;
+    background-color: rgb(84, 188, 188);
 }
 
 .footer-content {
