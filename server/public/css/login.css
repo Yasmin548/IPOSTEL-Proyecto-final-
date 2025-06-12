@@ -2,7 +2,8 @@ body{
     margin: 0;
     padding: 0;
     font-family: monserrat;
-    background: linear-gradient(150deg, #abebc6, #aed6f1);
+    background-image: linear-gradient(rgba(137, 218, 229, 0.61), rgba(111, 245, 250, 0.664)), url(../imagenes/marca\ de\ agua.jpg);
+    background-size: cover;
     height: 100vh;
 }
 
