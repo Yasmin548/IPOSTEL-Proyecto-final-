@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express"
 import { AuthController } from "../controller/auth.controller"
 import { validateClass } from "../middlewares/validateClass.middleware"
-import { createUserDTO, logUserDTO } from "../DTO/user.dto"
+import { createUserDTO, logUserDTO, updateUserDTO } from "../DTO/user.dto"
 import { sendResponse } from "../utils/sendResponse.util"
 
 const authRouter = express.Router()
@@ -30,6 +30,12 @@ authRouter
             sameSite: "strict",
         })
     }
+    sendResponse(res, response)
+})
+.put('/password', validateClass(updateUserDTO), async (req:Request, res:Response)=>{
+    const correo= String(req.user?.email)
+    const newPassword = req.body
+    const response = await controller.updatePasswordController(correo, newPassword)
     sendResponse(res, response)
 })
 

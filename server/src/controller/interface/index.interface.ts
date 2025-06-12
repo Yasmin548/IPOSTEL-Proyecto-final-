@@ -1,7 +1,7 @@
 import { createCargoDTO, updateCargoDTO } from "../../DTO/cargo.dto";
 import { createEmpleadoDTO, updateEmpleadoDTO } from "../../DTO/empleado.dto";
 import { createSucursalDTO, updateSucursalDTO } from "../../DTO/sucursal.dto";
-import { createUserDTO, logUserDTO } from "../../DTO/user.dto";
+import { createUserDTO, logUserDTO, updateUserDTO } from "../../DTO/user.dto";
 import { IFunctionResponse, TCargo, TEmpleado, TSucursal, TUsuario } from "../../types/index.types";
 
 export interface IEmpleadoController{
@@ -35,4 +35,5 @@ export interface ISucursalController{
 export interface IAuthController{
     createUserController(user:createUserDTO):Promise<IFunctionResponse<TUsuario>>
     loginUserController(loginData:logUserDTO):Promise<IFunctionResponse<{user:Partial<TUsuario>, token:string}>>
+    updatePasswordController(correo:string, userData:updateUserDTO):Promise<IFunctionResponse<TUsuario>>
 }

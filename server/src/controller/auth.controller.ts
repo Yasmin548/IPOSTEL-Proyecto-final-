@@ -1,5 +1,5 @@
-import { createUserDTO, logUserDTO } from "../DTO/user.dto";
-import { registerUserService } from "../services/auth.service";
+import { createUserDTO, logUserDTO, updateUserDTO } from "../DTO/user.dto";
+import { registerUserService, updateUserService } from "../services/auth.service";
 import { findUserByEmail } from "../services/user.service";
 import { IFunctionResponse, TUsuario } from "../types/index.types";
 import { comparePassword } from "../utils/hash.utils";
@@ -64,6 +64,21 @@ export class AuthController implements IAuthController{
         },{
             successStatus:200,
             successMessage:"Ingreso correcto"
+        })
+    }
+
+    public async updatePasswordController(correo: string, userData: updateUserDTO): Promise<IFunctionResponse<TUsuario>> {
+        return safe(async()=>{
+            const existingUser= await findUserByEmail(correo)
+            if(!existingUser){
+                throw{
+                    status:404,
+                    message:"El usuario no existe",
+                    error:"Not found"
+                }
+            }
+
+            return await updateUserService(correo, userData)
         })
     }
 }
