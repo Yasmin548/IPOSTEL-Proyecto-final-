@@ -3,6 +3,7 @@ import { AuthController } from "../controller/auth.controller"
 import { validateClass } from "../middlewares/validateClass.middleware"
 import { createUserDTO, logUserDTO, updateUserDTO } from "../DTO/user.dto"
 import { sendResponse } from "../utils/sendResponse.util"
+import { verifyData } from "../utils/jwt.utils"
 
 const authRouter = express.Router()
 const controller = new AuthController()
@@ -33,7 +34,10 @@ authRouter
     sendResponse(res, response)
 })
 .put('/password', validateClass(updateUserDTO), async (req:Request, res:Response)=>{
-    const correo= String(req.user?.email)
+    const token= req.cookies['Acces-Token']
+    const decoded =  verifyData(token)
+    const correo = decoded.email
+    console.log(correo)
     const newPassword = req.body
     const response = await controller.updatePasswordController(correo, newPassword)
     sendResponse(res, response)
