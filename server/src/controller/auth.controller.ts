@@ -1,3 +1,4 @@
+import { error } from "console";
 import { createUserDTO, logUserDTO, updateUserDTO } from "../DTO/user.dto";
 import { registerUserService, updateUserService } from "../services/auth.service";
 import { findUserByEmail } from "../services/user.service";
@@ -78,6 +79,15 @@ export class AuthController implements IAuthController{
                 }
             }
 
+            const same= await comparePassword(userData.password, existingUser.password)
+            if(same){
+                throw{
+                    status:400,
+                    message:"La contraseña es igual a la anterior",
+                    error:"Bad Request"
+                }
+            }
+            
             return await updateUserService(correo, userData)
         })
     }
