@@ -33,6 +33,11 @@ export type Sucursal = $Result.DefaultSelection<Prisma.$SucursalPayload>
  * 
  */
 export type Cargo = $Result.DefaultSelection<Prisma.$CargoPayload>
+/**
+ * Model contacto
+ * 
+ */
+export type contacto = $Result.DefaultSelection<Prisma.$contactoPayload>
 
 /**
  * Enums
@@ -216,6 +221,16 @@ export class PrismaClient<
     * ```
     */
   get cargo(): Prisma.CargoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.contacto`: Exposes CRUD operations for the **contacto** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Contactos
+    * const contactos = await prisma.contacto.findMany()
+    * ```
+    */
+  get contacto(): Prisma.contactoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -659,7 +674,8 @@ export namespace Prisma {
     Usuario: 'Usuario',
     Empleado: 'Empleado',
     Sucursal: 'Sucursal',
-    Cargo: 'Cargo'
+    Cargo: 'Cargo',
+    contacto: 'contacto'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -678,7 +694,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "usuario" | "empleado" | "sucursal" | "cargo"
+      modelProps: "usuario" | "empleado" | "sucursal" | "cargo" | "contacto"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -946,6 +962,72 @@ export namespace Prisma {
           }
         }
       }
+      contacto: {
+        payload: Prisma.$contactoPayload<ExtArgs>
+        fields: Prisma.contactoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.contactoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$contactoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.contactoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+          }
+          findFirst: {
+            args: Prisma.contactoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$contactoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.contactoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+          }
+          findMany: {
+            args: Prisma.contactoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$contactoPayload>[]
+          }
+          create: {
+            args: Prisma.contactoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+          }
+          createMany: {
+            args: Prisma.contactoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.contactoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+          }
+          update: {
+            args: Prisma.contactoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+          }
+          deleteMany: {
+            args: Prisma.contactoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.contactoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.contactoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+          }
+          aggregate: {
+            args: Prisma.ContactoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateContacto>
+          }
+          groupBy: {
+            args: Prisma.contactoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ContactoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.contactoCountArgs<ExtArgs>
+            result: $Utils.Optional<ContactoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1034,6 +1116,7 @@ export namespace Prisma {
     empleado?: EmpleadoOmit
     sucursal?: SucursalOmit
     cargo?: CargoOmit
+    contacto?: contactoOmit
   }
 
   /* Types for Logging */
@@ -5064,6 +5147,877 @@ export namespace Prisma {
 
 
   /**
+   * Model contacto
+   */
+
+  export type AggregateContacto = {
+    _count: ContactoCountAggregateOutputType | null
+    _min: ContactoMinAggregateOutputType | null
+    _max: ContactoMaxAggregateOutputType | null
+  }
+
+  export type ContactoMinAggregateOutputType = {
+    correo: string | null
+    nombre: string | null
+    asunto: string | null
+    mensaje: string | null
+  }
+
+  export type ContactoMaxAggregateOutputType = {
+    correo: string | null
+    nombre: string | null
+    asunto: string | null
+    mensaje: string | null
+  }
+
+  export type ContactoCountAggregateOutputType = {
+    correo: number
+    nombre: number
+    asunto: number
+    mensaje: number
+    _all: number
+  }
+
+
+  export type ContactoMinAggregateInputType = {
+    correo?: true
+    nombre?: true
+    asunto?: true
+    mensaje?: true
+  }
+
+  export type ContactoMaxAggregateInputType = {
+    correo?: true
+    nombre?: true
+    asunto?: true
+    mensaje?: true
+  }
+
+  export type ContactoCountAggregateInputType = {
+    correo?: true
+    nombre?: true
+    asunto?: true
+    mensaje?: true
+    _all?: true
+  }
+
+  export type ContactoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which contacto to aggregate.
+     */
+    where?: contactoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of contactos to fetch.
+     */
+    orderBy?: contactoOrderByWithRelationInput | contactoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: contactoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` contactos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` contactos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned contactos
+    **/
+    _count?: true | ContactoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ContactoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ContactoMaxAggregateInputType
+  }
+
+  export type GetContactoAggregateType<T extends ContactoAggregateArgs> = {
+        [P in keyof T & keyof AggregateContacto]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateContacto[P]>
+      : GetScalarType<T[P], AggregateContacto[P]>
+  }
+
+
+
+
+  export type contactoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: contactoWhereInput
+    orderBy?: contactoOrderByWithAggregationInput | contactoOrderByWithAggregationInput[]
+    by: ContactoScalarFieldEnum[] | ContactoScalarFieldEnum
+    having?: contactoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ContactoCountAggregateInputType | true
+    _min?: ContactoMinAggregateInputType
+    _max?: ContactoMaxAggregateInputType
+  }
+
+  export type ContactoGroupByOutputType = {
+    correo: string
+    nombre: string
+    asunto: string
+    mensaje: string
+    _count: ContactoCountAggregateOutputType | null
+    _min: ContactoMinAggregateOutputType | null
+    _max: ContactoMaxAggregateOutputType | null
+  }
+
+  type GetContactoGroupByPayload<T extends contactoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ContactoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ContactoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ContactoGroupByOutputType[P]>
+            : GetScalarType<T[P], ContactoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type contactoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    correo?: boolean
+    nombre?: boolean
+    asunto?: boolean
+    mensaje?: boolean
+  }, ExtArgs["result"]["contacto"]>
+
+
+
+  export type contactoSelectScalar = {
+    correo?: boolean
+    nombre?: boolean
+    asunto?: boolean
+    mensaje?: boolean
+  }
+
+  export type contactoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"correo" | "nombre" | "asunto" | "mensaje", ExtArgs["result"]["contacto"]>
+
+  export type $contactoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "contacto"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      correo: string
+      nombre: string
+      asunto: string
+      mensaje: string
+    }, ExtArgs["result"]["contacto"]>
+    composites: {}
+  }
+
+  type contactoGetPayload<S extends boolean | null | undefined | contactoDefaultArgs> = $Result.GetResult<Prisma.$contactoPayload, S>
+
+  type contactoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<contactoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ContactoCountAggregateInputType | true
+    }
+
+  export interface contactoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['contacto'], meta: { name: 'contacto' } }
+    /**
+     * Find zero or one Contacto that matches the filter.
+     * @param {contactoFindUniqueArgs} args - Arguments to find a Contacto
+     * @example
+     * // Get one Contacto
+     * const contacto = await prisma.contacto.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends contactoFindUniqueArgs>(args: SelectSubset<T, contactoFindUniqueArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Contacto that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {contactoFindUniqueOrThrowArgs} args - Arguments to find a Contacto
+     * @example
+     * // Get one Contacto
+     * const contacto = await prisma.contacto.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends contactoFindUniqueOrThrowArgs>(args: SelectSubset<T, contactoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Contacto that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {contactoFindFirstArgs} args - Arguments to find a Contacto
+     * @example
+     * // Get one Contacto
+     * const contacto = await prisma.contacto.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends contactoFindFirstArgs>(args?: SelectSubset<T, contactoFindFirstArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Contacto that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {contactoFindFirstOrThrowArgs} args - Arguments to find a Contacto
+     * @example
+     * // Get one Contacto
+     * const contacto = await prisma.contacto.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends contactoFindFirstOrThrowArgs>(args?: SelectSubset<T, contactoFindFirstOrThrowArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Contactos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {contactoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Contactos
+     * const contactos = await prisma.contacto.findMany()
+     * 
+     * // Get first 10 Contactos
+     * const contactos = await prisma.contacto.findMany({ take: 10 })
+     * 
+     * // Only select the `correo`
+     * const contactoWithCorreoOnly = await prisma.contacto.findMany({ select: { correo: true } })
+     * 
+     */
+    findMany<T extends contactoFindManyArgs>(args?: SelectSubset<T, contactoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Contacto.
+     * @param {contactoCreateArgs} args - Arguments to create a Contacto.
+     * @example
+     * // Create one Contacto
+     * const Contacto = await prisma.contacto.create({
+     *   data: {
+     *     // ... data to create a Contacto
+     *   }
+     * })
+     * 
+     */
+    create<T extends contactoCreateArgs>(args: SelectSubset<T, contactoCreateArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Contactos.
+     * @param {contactoCreateManyArgs} args - Arguments to create many Contactos.
+     * @example
+     * // Create many Contactos
+     * const contacto = await prisma.contacto.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends contactoCreateManyArgs>(args?: SelectSubset<T, contactoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Contacto.
+     * @param {contactoDeleteArgs} args - Arguments to delete one Contacto.
+     * @example
+     * // Delete one Contacto
+     * const Contacto = await prisma.contacto.delete({
+     *   where: {
+     *     // ... filter to delete one Contacto
+     *   }
+     * })
+     * 
+     */
+    delete<T extends contactoDeleteArgs>(args: SelectSubset<T, contactoDeleteArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Contacto.
+     * @param {contactoUpdateArgs} args - Arguments to update one Contacto.
+     * @example
+     * // Update one Contacto
+     * const contacto = await prisma.contacto.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends contactoUpdateArgs>(args: SelectSubset<T, contactoUpdateArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Contactos.
+     * @param {contactoDeleteManyArgs} args - Arguments to filter Contactos to delete.
+     * @example
+     * // Delete a few Contactos
+     * const { count } = await prisma.contacto.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends contactoDeleteManyArgs>(args?: SelectSubset<T, contactoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Contactos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {contactoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Contactos
+     * const contacto = await prisma.contacto.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends contactoUpdateManyArgs>(args: SelectSubset<T, contactoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Contacto.
+     * @param {contactoUpsertArgs} args - Arguments to update or create a Contacto.
+     * @example
+     * // Update or create a Contacto
+     * const contacto = await prisma.contacto.upsert({
+     *   create: {
+     *     // ... data to create a Contacto
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Contacto we want to update
+     *   }
+     * })
+     */
+    upsert<T extends contactoUpsertArgs>(args: SelectSubset<T, contactoUpsertArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Contactos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {contactoCountArgs} args - Arguments to filter Contactos to count.
+     * @example
+     * // Count the number of Contactos
+     * const count = await prisma.contacto.count({
+     *   where: {
+     *     // ... the filter for the Contactos we want to count
+     *   }
+     * })
+    **/
+    count<T extends contactoCountArgs>(
+      args?: Subset<T, contactoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ContactoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Contacto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContactoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ContactoAggregateArgs>(args: Subset<T, ContactoAggregateArgs>): Prisma.PrismaPromise<GetContactoAggregateType<T>>
+
+    /**
+     * Group by Contacto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {contactoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends contactoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: contactoGroupByArgs['orderBy'] }
+        : { orderBy?: contactoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, contactoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContactoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the contacto model
+   */
+  readonly fields: contactoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for contacto.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__contactoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the contacto model
+   */
+  interface contactoFieldRefs {
+    readonly correo: FieldRef<"contacto", 'String'>
+    readonly nombre: FieldRef<"contacto", 'String'>
+    readonly asunto: FieldRef<"contacto", 'String'>
+    readonly mensaje: FieldRef<"contacto", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * contacto findUnique
+   */
+  export type contactoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the contacto
+     */
+    select?: contactoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the contacto
+     */
+    omit?: contactoOmit<ExtArgs> | null
+    /**
+     * Filter, which contacto to fetch.
+     */
+    where: contactoWhereUniqueInput
+  }
+
+  /**
+   * contacto findUniqueOrThrow
+   */
+  export type contactoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the contacto
+     */
+    select?: contactoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the contacto
+     */
+    omit?: contactoOmit<ExtArgs> | null
+    /**
+     * Filter, which contacto to fetch.
+     */
+    where: contactoWhereUniqueInput
+  }
+
+  /**
+   * contacto findFirst
+   */
+  export type contactoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the contacto
+     */
+    select?: contactoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the contacto
+     */
+    omit?: contactoOmit<ExtArgs> | null
+    /**
+     * Filter, which contacto to fetch.
+     */
+    where?: contactoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of contactos to fetch.
+     */
+    orderBy?: contactoOrderByWithRelationInput | contactoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for contactos.
+     */
+    cursor?: contactoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` contactos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` contactos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of contactos.
+     */
+    distinct?: ContactoScalarFieldEnum | ContactoScalarFieldEnum[]
+  }
+
+  /**
+   * contacto findFirstOrThrow
+   */
+  export type contactoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the contacto
+     */
+    select?: contactoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the contacto
+     */
+    omit?: contactoOmit<ExtArgs> | null
+    /**
+     * Filter, which contacto to fetch.
+     */
+    where?: contactoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of contactos to fetch.
+     */
+    orderBy?: contactoOrderByWithRelationInput | contactoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for contactos.
+     */
+    cursor?: contactoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` contactos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` contactos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of contactos.
+     */
+    distinct?: ContactoScalarFieldEnum | ContactoScalarFieldEnum[]
+  }
+
+  /**
+   * contacto findMany
+   */
+  export type contactoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the contacto
+     */
+    select?: contactoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the contacto
+     */
+    omit?: contactoOmit<ExtArgs> | null
+    /**
+     * Filter, which contactos to fetch.
+     */
+    where?: contactoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of contactos to fetch.
+     */
+    orderBy?: contactoOrderByWithRelationInput | contactoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing contactos.
+     */
+    cursor?: contactoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` contactos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` contactos.
+     */
+    skip?: number
+    distinct?: ContactoScalarFieldEnum | ContactoScalarFieldEnum[]
+  }
+
+  /**
+   * contacto create
+   */
+  export type contactoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the contacto
+     */
+    select?: contactoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the contacto
+     */
+    omit?: contactoOmit<ExtArgs> | null
+    /**
+     * The data needed to create a contacto.
+     */
+    data: XOR<contactoCreateInput, contactoUncheckedCreateInput>
+  }
+
+  /**
+   * contacto createMany
+   */
+  export type contactoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many contactos.
+     */
+    data: contactoCreateManyInput | contactoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * contacto update
+   */
+  export type contactoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the contacto
+     */
+    select?: contactoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the contacto
+     */
+    omit?: contactoOmit<ExtArgs> | null
+    /**
+     * The data needed to update a contacto.
+     */
+    data: XOR<contactoUpdateInput, contactoUncheckedUpdateInput>
+    /**
+     * Choose, which contacto to update.
+     */
+    where: contactoWhereUniqueInput
+  }
+
+  /**
+   * contacto updateMany
+   */
+  export type contactoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update contactos.
+     */
+    data: XOR<contactoUpdateManyMutationInput, contactoUncheckedUpdateManyInput>
+    /**
+     * Filter which contactos to update
+     */
+    where?: contactoWhereInput
+    /**
+     * Limit how many contactos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * contacto upsert
+   */
+  export type contactoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the contacto
+     */
+    select?: contactoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the contacto
+     */
+    omit?: contactoOmit<ExtArgs> | null
+    /**
+     * The filter to search for the contacto to update in case it exists.
+     */
+    where: contactoWhereUniqueInput
+    /**
+     * In case the contacto found by the `where` argument doesn't exist, create a new contacto with this data.
+     */
+    create: XOR<contactoCreateInput, contactoUncheckedCreateInput>
+    /**
+     * In case the contacto was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<contactoUpdateInput, contactoUncheckedUpdateInput>
+  }
+
+  /**
+   * contacto delete
+   */
+  export type contactoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the contacto
+     */
+    select?: contactoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the contacto
+     */
+    omit?: contactoOmit<ExtArgs> | null
+    /**
+     * Filter which contacto to delete.
+     */
+    where: contactoWhereUniqueInput
+  }
+
+  /**
+   * contacto deleteMany
+   */
+  export type contactoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which contactos to delete
+     */
+    where?: contactoWhereInput
+    /**
+     * Limit how many contactos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * contacto without action
+   */
+  export type contactoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the contacto
+     */
+    select?: contactoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the contacto
+     */
+    omit?: contactoOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5128,6 +6082,16 @@ export namespace Prisma {
   export type CargoScalarFieldEnum = (typeof CargoScalarFieldEnum)[keyof typeof CargoScalarFieldEnum]
 
 
+  export const ContactoScalarFieldEnum: {
+    correo: 'correo',
+    nombre: 'nombre',
+    asunto: 'asunto',
+    mensaje: 'mensaje'
+  };
+
+  export type ContactoScalarFieldEnum = (typeof ContactoScalarFieldEnum)[keyof typeof ContactoScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -5187,6 +6151,16 @@ export namespace Prisma {
   };
 
   export type CargoOrderByRelevanceFieldEnum = (typeof CargoOrderByRelevanceFieldEnum)[keyof typeof CargoOrderByRelevanceFieldEnum]
+
+
+  export const contactoOrderByRelevanceFieldEnum: {
+    correo: 'correo',
+    nombre: 'nombre',
+    asunto: 'asunto',
+    mensaje: 'mensaje'
+  };
+
+  export type contactoOrderByRelevanceFieldEnum = (typeof contactoOrderByRelevanceFieldEnum)[keyof typeof contactoOrderByRelevanceFieldEnum]
 
 
   /**
@@ -5495,6 +6469,54 @@ export namespace Prisma {
     departamento?: StringWithAggregatesFilter<"Cargo"> | string
   }
 
+  export type contactoWhereInput = {
+    AND?: contactoWhereInput | contactoWhereInput[]
+    OR?: contactoWhereInput[]
+    NOT?: contactoWhereInput | contactoWhereInput[]
+    correo?: StringFilter<"contacto"> | string
+    nombre?: StringFilter<"contacto"> | string
+    asunto?: StringFilter<"contacto"> | string
+    mensaje?: StringFilter<"contacto"> | string
+  }
+
+  export type contactoOrderByWithRelationInput = {
+    correo?: SortOrder
+    nombre?: SortOrder
+    asunto?: SortOrder
+    mensaje?: SortOrder
+    _relevance?: contactoOrderByRelevanceInput
+  }
+
+  export type contactoWhereUniqueInput = Prisma.AtLeast<{
+    correo?: string
+    AND?: contactoWhereInput | contactoWhereInput[]
+    OR?: contactoWhereInput[]
+    NOT?: contactoWhereInput | contactoWhereInput[]
+    nombre?: StringFilter<"contacto"> | string
+    asunto?: StringFilter<"contacto"> | string
+    mensaje?: StringFilter<"contacto"> | string
+  }, "correo">
+
+  export type contactoOrderByWithAggregationInput = {
+    correo?: SortOrder
+    nombre?: SortOrder
+    asunto?: SortOrder
+    mensaje?: SortOrder
+    _count?: contactoCountOrderByAggregateInput
+    _max?: contactoMaxOrderByAggregateInput
+    _min?: contactoMinOrderByAggregateInput
+  }
+
+  export type contactoScalarWhereWithAggregatesInput = {
+    AND?: contactoScalarWhereWithAggregatesInput | contactoScalarWhereWithAggregatesInput[]
+    OR?: contactoScalarWhereWithAggregatesInput[]
+    NOT?: contactoScalarWhereWithAggregatesInput | contactoScalarWhereWithAggregatesInput[]
+    correo?: StringWithAggregatesFilter<"contacto"> | string
+    nombre?: StringWithAggregatesFilter<"contacto"> | string
+    asunto?: StringWithAggregatesFilter<"contacto"> | string
+    mensaje?: StringWithAggregatesFilter<"contacto"> | string
+  }
+
   export type UsuarioCreateInput = {
     correo: string
     nombre: string
@@ -5769,6 +6791,55 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     departamento?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type contactoCreateInput = {
+    correo: string
+    nombre: string
+    asunto: string
+    mensaje: string
+  }
+
+  export type contactoUncheckedCreateInput = {
+    correo: string
+    nombre: string
+    asunto: string
+    mensaje: string
+  }
+
+  export type contactoUpdateInput = {
+    correo?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
+    asunto?: StringFieldUpdateOperationsInput | string
+    mensaje?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type contactoUncheckedUpdateInput = {
+    correo?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
+    asunto?: StringFieldUpdateOperationsInput | string
+    mensaje?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type contactoCreateManyInput = {
+    correo: string
+    nombre: string
+    asunto: string
+    mensaje: string
+  }
+
+  export type contactoUpdateManyMutationInput = {
+    correo?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
+    asunto?: StringFieldUpdateOperationsInput | string
+    mensaje?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type contactoUncheckedUpdateManyInput = {
+    correo?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
+    asunto?: StringFieldUpdateOperationsInput | string
+    mensaje?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6088,6 +7159,33 @@ export namespace Prisma {
 
   export type CargoSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type contactoOrderByRelevanceInput = {
+    fields: contactoOrderByRelevanceFieldEnum | contactoOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type contactoCountOrderByAggregateInput = {
+    correo?: SortOrder
+    nombre?: SortOrder
+    asunto?: SortOrder
+    mensaje?: SortOrder
+  }
+
+  export type contactoMaxOrderByAggregateInput = {
+    correo?: SortOrder
+    nombre?: SortOrder
+    asunto?: SortOrder
+    mensaje?: SortOrder
+  }
+
+  export type contactoMinOrderByAggregateInput = {
+    correo?: SortOrder
+    nombre?: SortOrder
+    asunto?: SortOrder
+    mensaje?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {
