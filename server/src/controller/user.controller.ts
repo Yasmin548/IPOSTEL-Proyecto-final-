@@ -1,3 +1,6 @@
+import { adminUpdateUserDTO } from "../DTO/user.dto";
+import { updateUserInfoService } from "../services/auth.service";
+
 import { findUserByEmail, userListService } from "../services/user.service";
 import { IFunctionResponse, TUsuario } from "../types/index.types";
 import { safe } from "../wrapper/safe.wrapper";
@@ -17,6 +20,9 @@ export class UserController implements IUserController{
             }
 
             return users
+        },{
+            successStatus:200,
+            successMessage:"Lista de Usuarios"
         })
     }
 
@@ -32,8 +38,27 @@ export class UserController implements IUserController{
             }
 
             return user
+        },{
+            successStatus:200,
+            successMessage:"Usuario encontrado"
         })
     }
 
-    
+    public async updateUserInfoController(correo: string, userData: adminUpdateUserDTO): Promise<IFunctionResponse<TUsuario>> {
+        return safe(async() =>{const user = await findUserByEmail(correo)
+        if(!user){
+            throw{
+                status:404,
+                message:"El usuario no se encuentra Registrado",
+                error:"No content"
+            }
+        }
+
+        const userUpdated = await updateUserInfoService(correo, userData) 
+        return userUpdated
+    },{
+        successStatus:200,
+        successMessage:"Usuario Actulizado Correctamente"
+    })
+    }
 }

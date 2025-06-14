@@ -34,7 +34,7 @@ export const updateUserService = async (correo:string, userData:updateUserDTO)=>
     return userUpdated
 }
 
-export const updateUserInfo = async(correo:string, userData:adminUpdateUserDTO)=>{
+export const updateUserInfoService = async(correo:string, userData:adminUpdateUserDTO)=>{
     const userUpdated = await Prisma.usuario.update({
         where:{correo:correo},
         data:userData
