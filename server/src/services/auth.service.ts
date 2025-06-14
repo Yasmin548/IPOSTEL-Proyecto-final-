@@ -1,5 +1,5 @@
 import Prisma from "../config/prisma.config"
-import { createUserDTO, logUserDTO, updateUserDTO } from "../DTO/user.dto"
+import { adminUpdateUserDTO, createUserDTO, logUserDTO, updateUserDTO } from "../DTO/user.dto"
 import { hashPassword } from "../utils/hash.utils"
 
 
@@ -31,5 +31,13 @@ export const updateUserService = async (correo:string, userData:updateUserDTO)=>
         data:{password:updatedHashedPassword}
     })
 
+    return userUpdated
+}
+
+export const updateUserInfo = async(correo:string, userData:adminUpdateUserDTO)=>{
+    const userUpdated = await Prisma.usuario.update({
+        where:{correo:correo},
+        data:userData
+    })
     return userUpdated
 }
