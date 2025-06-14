@@ -40,5 +40,6 @@ export interface IAuthController{
 
 export interface IUserController{
     userListController():Promise<IFunctionResponse<TUsuario[]  | null>>
+    searchUserByEmailController(correo:string):Promise<IFunctionResponse<TUsuario | null>>
     updateUserInfoController(correo:string, userData:adminUpdateUserDTO):Promise<IFunctionResponse<TUsuario>>
 }
