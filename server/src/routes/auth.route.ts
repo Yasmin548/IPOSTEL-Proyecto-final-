@@ -42,5 +42,12 @@ authRouter
     const response = await controller.updatePasswordController(correo, newPassword)
     sendResponse(res, response)
 })
+.post('/logout', (req:Request, res:Response)=>{
+    res.clearCookie('Acces-Token')
+    res.status(200).json({
+        status: 200,
+        message: "Sesión cerrada correctamente"
+    })
+})
 
 export default authRouter
