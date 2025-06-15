@@ -45,5 +45,8 @@
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1",
     "webpack-node-externals": "^3.0.0"
+  },
+  "prisma": {
+    "schema": "prisma/schema.prisma"
   }
 }

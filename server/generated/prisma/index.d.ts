@@ -34,10 +34,10 @@ export type Sucursal = $Result.DefaultSelection<Prisma.$SucursalPayload>
  */
 export type Cargo = $Result.DefaultSelection<Prisma.$CargoPayload>
 /**
- * Model contacto
+ * Model mensaje
  * 
  */
-export type contacto = $Result.DefaultSelection<Prisma.$contactoPayload>
+export type mensaje = $Result.DefaultSelection<Prisma.$mensajePayload>
 
 /**
  * Enums
@@ -223,14 +223,14 @@ export class PrismaClient<
   get cargo(): Prisma.CargoDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.contacto`: Exposes CRUD operations for the **contacto** model.
+   * `prisma.mensaje`: Exposes CRUD operations for the **mensaje** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Contactos
-    * const contactos = await prisma.contacto.findMany()
+    * // Fetch zero or more Mensajes
+    * const mensajes = await prisma.mensaje.findMany()
     * ```
     */
-  get contacto(): Prisma.contactoDelegate<ExtArgs, ClientOptions>;
+  get mensaje(): Prisma.mensajeDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -675,7 +675,7 @@ export namespace Prisma {
     Empleado: 'Empleado',
     Sucursal: 'Sucursal',
     Cargo: 'Cargo',
-    contacto: 'contacto'
+    mensaje: 'mensaje'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -694,7 +694,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "usuario" | "empleado" | "sucursal" | "cargo" | "contacto"
+      modelProps: "usuario" | "empleado" | "sucursal" | "cargo" | "mensaje"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -962,69 +962,69 @@ export namespace Prisma {
           }
         }
       }
-      contacto: {
-        payload: Prisma.$contactoPayload<ExtArgs>
-        fields: Prisma.contactoFieldRefs
+      mensaje: {
+        payload: Prisma.$mensajePayload<ExtArgs>
+        fields: Prisma.mensajeFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.contactoFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$contactoPayload> | null
+            args: Prisma.mensajeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mensajePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.contactoFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+            args: Prisma.mensajeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mensajePayload>
           }
           findFirst: {
-            args: Prisma.contactoFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$contactoPayload> | null
+            args: Prisma.mensajeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mensajePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.contactoFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+            args: Prisma.mensajeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mensajePayload>
           }
           findMany: {
-            args: Prisma.contactoFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$contactoPayload>[]
+            args: Prisma.mensajeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mensajePayload>[]
           }
           create: {
-            args: Prisma.contactoCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+            args: Prisma.mensajeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mensajePayload>
           }
           createMany: {
-            args: Prisma.contactoCreateManyArgs<ExtArgs>
+            args: Prisma.mensajeCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.contactoDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+            args: Prisma.mensajeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mensajePayload>
           }
           update: {
-            args: Prisma.contactoUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+            args: Prisma.mensajeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mensajePayload>
           }
           deleteMany: {
-            args: Prisma.contactoDeleteManyArgs<ExtArgs>
+            args: Prisma.mensajeDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.contactoUpdateManyArgs<ExtArgs>
+            args: Prisma.mensajeUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.contactoUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$contactoPayload>
+            args: Prisma.mensajeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mensajePayload>
           }
           aggregate: {
-            args: Prisma.ContactoAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateContacto>
+            args: Prisma.MensajeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMensaje>
           }
           groupBy: {
-            args: Prisma.contactoGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ContactoGroupByOutputType>[]
+            args: Prisma.mensajeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MensajeGroupByOutputType>[]
           }
           count: {
-            args: Prisma.contactoCountArgs<ExtArgs>
-            result: $Utils.Optional<ContactoCountAggregateOutputType> | number
+            args: Prisma.mensajeCountArgs<ExtArgs>
+            result: $Utils.Optional<MensajeCountAggregateOutputType> | number
           }
         }
       }
@@ -1116,7 +1116,7 @@ export namespace Prisma {
     empleado?: EmpleadoOmit
     sucursal?: SucursalOmit
     cargo?: CargoOmit
-    contacto?: contactoOmit
+    mensaje?: mensajeOmit
   }
 
   /* Types for Logging */
@@ -5147,319 +5147,329 @@ export namespace Prisma {
 
 
   /**
-   * Model contacto
+   * Model mensaje
    */
 
-  export type AggregateContacto = {
-    _count: ContactoCountAggregateOutputType | null
-    _min: ContactoMinAggregateOutputType | null
-    _max: ContactoMaxAggregateOutputType | null
+  export type AggregateMensaje = {
+    _count: MensajeCountAggregateOutputType | null
+    _min: MensajeMinAggregateOutputType | null
+    _max: MensajeMaxAggregateOutputType | null
   }
 
-  export type ContactoMinAggregateOutputType = {
+  export type MensajeMinAggregateOutputType = {
     correo: string | null
     nombre: string | null
     asunto: string | null
     mensaje: string | null
+    fecha: Date | null
   }
 
-  export type ContactoMaxAggregateOutputType = {
+  export type MensajeMaxAggregateOutputType = {
     correo: string | null
     nombre: string | null
     asunto: string | null
     mensaje: string | null
+    fecha: Date | null
   }
 
-  export type ContactoCountAggregateOutputType = {
+  export type MensajeCountAggregateOutputType = {
     correo: number
     nombre: number
     asunto: number
     mensaje: number
+    fecha: number
     _all: number
   }
 
 
-  export type ContactoMinAggregateInputType = {
+  export type MensajeMinAggregateInputType = {
     correo?: true
     nombre?: true
     asunto?: true
     mensaje?: true
+    fecha?: true
   }
 
-  export type ContactoMaxAggregateInputType = {
+  export type MensajeMaxAggregateInputType = {
     correo?: true
     nombre?: true
     asunto?: true
     mensaje?: true
+    fecha?: true
   }
 
-  export type ContactoCountAggregateInputType = {
+  export type MensajeCountAggregateInputType = {
     correo?: true
     nombre?: true
     asunto?: true
     mensaje?: true
+    fecha?: true
     _all?: true
   }
 
-  export type ContactoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MensajeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which contacto to aggregate.
+     * Filter which mensaje to aggregate.
      */
-    where?: contactoWhereInput
+    where?: mensajeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of contactos to fetch.
+     * Determine the order of mensajes to fetch.
      */
-    orderBy?: contactoOrderByWithRelationInput | contactoOrderByWithRelationInput[]
+    orderBy?: mensajeOrderByWithRelationInput | mensajeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: contactoWhereUniqueInput
+    cursor?: mensajeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` contactos from the position of the cursor.
+     * Take `±n` mensajes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` contactos.
+     * Skip the first `n` mensajes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned contactos
+     * Count returned mensajes
     **/
-    _count?: true | ContactoCountAggregateInputType
+    _count?: true | MensajeCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: ContactoMinAggregateInputType
+    _min?: MensajeMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: ContactoMaxAggregateInputType
+    _max?: MensajeMaxAggregateInputType
   }
 
-  export type GetContactoAggregateType<T extends ContactoAggregateArgs> = {
-        [P in keyof T & keyof AggregateContacto]: P extends '_count' | 'count'
+  export type GetMensajeAggregateType<T extends MensajeAggregateArgs> = {
+        [P in keyof T & keyof AggregateMensaje]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateContacto[P]>
-      : GetScalarType<T[P], AggregateContacto[P]>
+        : GetScalarType<T[P], AggregateMensaje[P]>
+      : GetScalarType<T[P], AggregateMensaje[P]>
   }
 
 
 
 
-  export type contactoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: contactoWhereInput
-    orderBy?: contactoOrderByWithAggregationInput | contactoOrderByWithAggregationInput[]
-    by: ContactoScalarFieldEnum[] | ContactoScalarFieldEnum
-    having?: contactoScalarWhereWithAggregatesInput
+  export type mensajeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: mensajeWhereInput
+    orderBy?: mensajeOrderByWithAggregationInput | mensajeOrderByWithAggregationInput[]
+    by: MensajeScalarFieldEnum[] | MensajeScalarFieldEnum
+    having?: mensajeScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: ContactoCountAggregateInputType | true
-    _min?: ContactoMinAggregateInputType
-    _max?: ContactoMaxAggregateInputType
+    _count?: MensajeCountAggregateInputType | true
+    _min?: MensajeMinAggregateInputType
+    _max?: MensajeMaxAggregateInputType
   }
 
-  export type ContactoGroupByOutputType = {
+  export type MensajeGroupByOutputType = {
     correo: string
     nombre: string
     asunto: string
     mensaje: string
-    _count: ContactoCountAggregateOutputType | null
-    _min: ContactoMinAggregateOutputType | null
-    _max: ContactoMaxAggregateOutputType | null
+    fecha: Date
+    _count: MensajeCountAggregateOutputType | null
+    _min: MensajeMinAggregateOutputType | null
+    _max: MensajeMaxAggregateOutputType | null
   }
 
-  type GetContactoGroupByPayload<T extends contactoGroupByArgs> = Prisma.PrismaPromise<
+  type GetMensajeGroupByPayload<T extends mensajeGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<ContactoGroupByOutputType, T['by']> &
+      PickEnumerable<MensajeGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof ContactoGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof MensajeGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], ContactoGroupByOutputType[P]>
-            : GetScalarType<T[P], ContactoGroupByOutputType[P]>
+              : GetScalarType<T[P], MensajeGroupByOutputType[P]>
+            : GetScalarType<T[P], MensajeGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type contactoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type mensajeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     correo?: boolean
     nombre?: boolean
     asunto?: boolean
     mensaje?: boolean
-  }, ExtArgs["result"]["contacto"]>
+    fecha?: boolean
+  }, ExtArgs["result"]["mensaje"]>
 
 
 
-  export type contactoSelectScalar = {
+  export type mensajeSelectScalar = {
     correo?: boolean
     nombre?: boolean
     asunto?: boolean
     mensaje?: boolean
+    fecha?: boolean
   }
 
-  export type contactoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"correo" | "nombre" | "asunto" | "mensaje", ExtArgs["result"]["contacto"]>
+  export type mensajeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"correo" | "nombre" | "asunto" | "mensaje" | "fecha", ExtArgs["result"]["mensaje"]>
 
-  export type $contactoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "contacto"
+  export type $mensajePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "mensaje"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       correo: string
       nombre: string
       asunto: string
       mensaje: string
-    }, ExtArgs["result"]["contacto"]>
+      fecha: Date
+    }, ExtArgs["result"]["mensaje"]>
     composites: {}
   }
 
-  type contactoGetPayload<S extends boolean | null | undefined | contactoDefaultArgs> = $Result.GetResult<Prisma.$contactoPayload, S>
+  type mensajeGetPayload<S extends boolean | null | undefined | mensajeDefaultArgs> = $Result.GetResult<Prisma.$mensajePayload, S>
 
-  type contactoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<contactoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ContactoCountAggregateInputType | true
+  type mensajeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<mensajeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MensajeCountAggregateInputType | true
     }
 
-  export interface contactoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['contacto'], meta: { name: 'contacto' } }
+  export interface mensajeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['mensaje'], meta: { name: 'mensaje' } }
     /**
-     * Find zero or one Contacto that matches the filter.
-     * @param {contactoFindUniqueArgs} args - Arguments to find a Contacto
+     * Find zero or one Mensaje that matches the filter.
+     * @param {mensajeFindUniqueArgs} args - Arguments to find a Mensaje
      * @example
-     * // Get one Contacto
-     * const contacto = await prisma.contacto.findUnique({
+     * // Get one Mensaje
+     * const mensaje = await prisma.mensaje.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends contactoFindUniqueArgs>(args: SelectSubset<T, contactoFindUniqueArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends mensajeFindUniqueArgs>(args: SelectSubset<T, mensajeFindUniqueArgs<ExtArgs>>): Prisma__mensajeClient<$Result.GetResult<Prisma.$mensajePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Contacto that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Mensaje that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {contactoFindUniqueOrThrowArgs} args - Arguments to find a Contacto
+     * @param {mensajeFindUniqueOrThrowArgs} args - Arguments to find a Mensaje
      * @example
-     * // Get one Contacto
-     * const contacto = await prisma.contacto.findUniqueOrThrow({
+     * // Get one Mensaje
+     * const mensaje = await prisma.mensaje.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends contactoFindUniqueOrThrowArgs>(args: SelectSubset<T, contactoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends mensajeFindUniqueOrThrowArgs>(args: SelectSubset<T, mensajeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__mensajeClient<$Result.GetResult<Prisma.$mensajePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Contacto that matches the filter.
+     * Find the first Mensaje that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {contactoFindFirstArgs} args - Arguments to find a Contacto
+     * @param {mensajeFindFirstArgs} args - Arguments to find a Mensaje
      * @example
-     * // Get one Contacto
-     * const contacto = await prisma.contacto.findFirst({
+     * // Get one Mensaje
+     * const mensaje = await prisma.mensaje.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends contactoFindFirstArgs>(args?: SelectSubset<T, contactoFindFirstArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends mensajeFindFirstArgs>(args?: SelectSubset<T, mensajeFindFirstArgs<ExtArgs>>): Prisma__mensajeClient<$Result.GetResult<Prisma.$mensajePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Contacto that matches the filter or
+     * Find the first Mensaje that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {contactoFindFirstOrThrowArgs} args - Arguments to find a Contacto
+     * @param {mensajeFindFirstOrThrowArgs} args - Arguments to find a Mensaje
      * @example
-     * // Get one Contacto
-     * const contacto = await prisma.contacto.findFirstOrThrow({
+     * // Get one Mensaje
+     * const mensaje = await prisma.mensaje.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends contactoFindFirstOrThrowArgs>(args?: SelectSubset<T, contactoFindFirstOrThrowArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends mensajeFindFirstOrThrowArgs>(args?: SelectSubset<T, mensajeFindFirstOrThrowArgs<ExtArgs>>): Prisma__mensajeClient<$Result.GetResult<Prisma.$mensajePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Contactos that matches the filter.
+     * Find zero or more Mensajes that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {contactoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {mensajeFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Contactos
-     * const contactos = await prisma.contacto.findMany()
+     * // Get all Mensajes
+     * const mensajes = await prisma.mensaje.findMany()
      * 
-     * // Get first 10 Contactos
-     * const contactos = await prisma.contacto.findMany({ take: 10 })
+     * // Get first 10 Mensajes
+     * const mensajes = await prisma.mensaje.findMany({ take: 10 })
      * 
      * // Only select the `correo`
-     * const contactoWithCorreoOnly = await prisma.contacto.findMany({ select: { correo: true } })
+     * const mensajeWithCorreoOnly = await prisma.mensaje.findMany({ select: { correo: true } })
      * 
      */
-    findMany<T extends contactoFindManyArgs>(args?: SelectSubset<T, contactoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends mensajeFindManyArgs>(args?: SelectSubset<T, mensajeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mensajePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Contacto.
-     * @param {contactoCreateArgs} args - Arguments to create a Contacto.
+     * Create a Mensaje.
+     * @param {mensajeCreateArgs} args - Arguments to create a Mensaje.
      * @example
-     * // Create one Contacto
-     * const Contacto = await prisma.contacto.create({
+     * // Create one Mensaje
+     * const Mensaje = await prisma.mensaje.create({
      *   data: {
-     *     // ... data to create a Contacto
+     *     // ... data to create a Mensaje
      *   }
      * })
      * 
      */
-    create<T extends contactoCreateArgs>(args: SelectSubset<T, contactoCreateArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends mensajeCreateArgs>(args: SelectSubset<T, mensajeCreateArgs<ExtArgs>>): Prisma__mensajeClient<$Result.GetResult<Prisma.$mensajePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Contactos.
-     * @param {contactoCreateManyArgs} args - Arguments to create many Contactos.
+     * Create many Mensajes.
+     * @param {mensajeCreateManyArgs} args - Arguments to create many Mensajes.
      * @example
-     * // Create many Contactos
-     * const contacto = await prisma.contacto.createMany({
+     * // Create many Mensajes
+     * const mensaje = await prisma.mensaje.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends contactoCreateManyArgs>(args?: SelectSubset<T, contactoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends mensajeCreateManyArgs>(args?: SelectSubset<T, mensajeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Contacto.
-     * @param {contactoDeleteArgs} args - Arguments to delete one Contacto.
+     * Delete a Mensaje.
+     * @param {mensajeDeleteArgs} args - Arguments to delete one Mensaje.
      * @example
-     * // Delete one Contacto
-     * const Contacto = await prisma.contacto.delete({
+     * // Delete one Mensaje
+     * const Mensaje = await prisma.mensaje.delete({
      *   where: {
-     *     // ... filter to delete one Contacto
+     *     // ... filter to delete one Mensaje
      *   }
      * })
      * 
      */
-    delete<T extends contactoDeleteArgs>(args: SelectSubset<T, contactoDeleteArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends mensajeDeleteArgs>(args: SelectSubset<T, mensajeDeleteArgs<ExtArgs>>): Prisma__mensajeClient<$Result.GetResult<Prisma.$mensajePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Contacto.
-     * @param {contactoUpdateArgs} args - Arguments to update one Contacto.
+     * Update one Mensaje.
+     * @param {mensajeUpdateArgs} args - Arguments to update one Mensaje.
      * @example
-     * // Update one Contacto
-     * const contacto = await prisma.contacto.update({
+     * // Update one Mensaje
+     * const mensaje = await prisma.mensaje.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5469,30 +5479,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends contactoUpdateArgs>(args: SelectSubset<T, contactoUpdateArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends mensajeUpdateArgs>(args: SelectSubset<T, mensajeUpdateArgs<ExtArgs>>): Prisma__mensajeClient<$Result.GetResult<Prisma.$mensajePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Contactos.
-     * @param {contactoDeleteManyArgs} args - Arguments to filter Contactos to delete.
+     * Delete zero or more Mensajes.
+     * @param {mensajeDeleteManyArgs} args - Arguments to filter Mensajes to delete.
      * @example
-     * // Delete a few Contactos
-     * const { count } = await prisma.contacto.deleteMany({
+     * // Delete a few Mensajes
+     * const { count } = await prisma.mensaje.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends contactoDeleteManyArgs>(args?: SelectSubset<T, contactoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends mensajeDeleteManyArgs>(args?: SelectSubset<T, mensajeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Contactos.
+     * Update zero or more Mensajes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {contactoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {mensajeUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Contactos
-     * const contacto = await prisma.contacto.updateMany({
+     * // Update many Mensajes
+     * const mensaje = await prisma.mensaje.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5502,56 +5512,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends contactoUpdateManyArgs>(args: SelectSubset<T, contactoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends mensajeUpdateManyArgs>(args: SelectSubset<T, mensajeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Contacto.
-     * @param {contactoUpsertArgs} args - Arguments to update or create a Contacto.
+     * Create or update one Mensaje.
+     * @param {mensajeUpsertArgs} args - Arguments to update or create a Mensaje.
      * @example
-     * // Update or create a Contacto
-     * const contacto = await prisma.contacto.upsert({
+     * // Update or create a Mensaje
+     * const mensaje = await prisma.mensaje.upsert({
      *   create: {
-     *     // ... data to create a Contacto
+     *     // ... data to create a Mensaje
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Contacto we want to update
+     *     // ... the filter for the Mensaje we want to update
      *   }
      * })
      */
-    upsert<T extends contactoUpsertArgs>(args: SelectSubset<T, contactoUpsertArgs<ExtArgs>>): Prisma__contactoClient<$Result.GetResult<Prisma.$contactoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends mensajeUpsertArgs>(args: SelectSubset<T, mensajeUpsertArgs<ExtArgs>>): Prisma__mensajeClient<$Result.GetResult<Prisma.$mensajePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Contactos.
+     * Count the number of Mensajes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {contactoCountArgs} args - Arguments to filter Contactos to count.
+     * @param {mensajeCountArgs} args - Arguments to filter Mensajes to count.
      * @example
-     * // Count the number of Contactos
-     * const count = await prisma.contacto.count({
+     * // Count the number of Mensajes
+     * const count = await prisma.mensaje.count({
      *   where: {
-     *     // ... the filter for the Contactos we want to count
+     *     // ... the filter for the Mensajes we want to count
      *   }
      * })
     **/
-    count<T extends contactoCountArgs>(
-      args?: Subset<T, contactoCountArgs>,
+    count<T extends mensajeCountArgs>(
+      args?: Subset<T, mensajeCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], ContactoCountAggregateOutputType>
+          : GetScalarType<T['select'], MensajeCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Contacto.
+     * Allows you to perform aggregations operations on a Mensaje.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {MensajeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5571,13 +5581,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends ContactoAggregateArgs>(args: Subset<T, ContactoAggregateArgs>): Prisma.PrismaPromise<GetContactoAggregateType<T>>
+    aggregate<T extends MensajeAggregateArgs>(args: Subset<T, MensajeAggregateArgs>): Prisma.PrismaPromise<GetMensajeAggregateType<T>>
 
     /**
-     * Group by Contacto.
+     * Group by Mensaje.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {contactoGroupByArgs} args - Group by arguments.
+     * @param {mensajeGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5592,14 +5602,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends contactoGroupByArgs,
+      T extends mensajeGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: contactoGroupByArgs['orderBy'] }
-        : { orderBy?: contactoGroupByArgs['orderBy'] },
+        ? { orderBy: mensajeGroupByArgs['orderBy'] }
+        : { orderBy?: mensajeGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5648,20 +5658,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, contactoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContactoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, mensajeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMensajeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the contacto model
+   * Fields of the mensaje model
    */
-  readonly fields: contactoFieldRefs;
+  readonly fields: mensajeFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for contacto.
+   * The delegate class that acts as a "Promise-like" for mensaje.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__contactoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__mensajeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5689,331 +5699,332 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the contacto model
+   * Fields of the mensaje model
    */
-  interface contactoFieldRefs {
-    readonly correo: FieldRef<"contacto", 'String'>
-    readonly nombre: FieldRef<"contacto", 'String'>
-    readonly asunto: FieldRef<"contacto", 'String'>
-    readonly mensaje: FieldRef<"contacto", 'String'>
+  interface mensajeFieldRefs {
+    readonly correo: FieldRef<"mensaje", 'String'>
+    readonly nombre: FieldRef<"mensaje", 'String'>
+    readonly asunto: FieldRef<"mensaje", 'String'>
+    readonly mensaje: FieldRef<"mensaje", 'String'>
+    readonly fecha: FieldRef<"mensaje", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * contacto findUnique
+   * mensaje findUnique
    */
-  export type contactoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the contacto
+     * Select specific fields to fetch from the mensaje
      */
-    select?: contactoSelect<ExtArgs> | null
+    select?: mensajeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the contacto
+     * Omit specific fields from the mensaje
      */
-    omit?: contactoOmit<ExtArgs> | null
+    omit?: mensajeOmit<ExtArgs> | null
     /**
-     * Filter, which contacto to fetch.
+     * Filter, which mensaje to fetch.
      */
-    where: contactoWhereUniqueInput
+    where: mensajeWhereUniqueInput
   }
 
   /**
-   * contacto findUniqueOrThrow
+   * mensaje findUniqueOrThrow
    */
-  export type contactoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the contacto
+     * Select specific fields to fetch from the mensaje
      */
-    select?: contactoSelect<ExtArgs> | null
+    select?: mensajeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the contacto
+     * Omit specific fields from the mensaje
      */
-    omit?: contactoOmit<ExtArgs> | null
+    omit?: mensajeOmit<ExtArgs> | null
     /**
-     * Filter, which contacto to fetch.
+     * Filter, which mensaje to fetch.
      */
-    where: contactoWhereUniqueInput
+    where: mensajeWhereUniqueInput
   }
 
   /**
-   * contacto findFirst
+   * mensaje findFirst
    */
-  export type contactoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the contacto
+     * Select specific fields to fetch from the mensaje
      */
-    select?: contactoSelect<ExtArgs> | null
+    select?: mensajeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the contacto
+     * Omit specific fields from the mensaje
      */
-    omit?: contactoOmit<ExtArgs> | null
+    omit?: mensajeOmit<ExtArgs> | null
     /**
-     * Filter, which contacto to fetch.
+     * Filter, which mensaje to fetch.
      */
-    where?: contactoWhereInput
+    where?: mensajeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of contactos to fetch.
+     * Determine the order of mensajes to fetch.
      */
-    orderBy?: contactoOrderByWithRelationInput | contactoOrderByWithRelationInput[]
+    orderBy?: mensajeOrderByWithRelationInput | mensajeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for contactos.
+     * Sets the position for searching for mensajes.
      */
-    cursor?: contactoWhereUniqueInput
+    cursor?: mensajeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` contactos from the position of the cursor.
+     * Take `±n` mensajes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` contactos.
+     * Skip the first `n` mensajes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of contactos.
+     * Filter by unique combinations of mensajes.
      */
-    distinct?: ContactoScalarFieldEnum | ContactoScalarFieldEnum[]
+    distinct?: MensajeScalarFieldEnum | MensajeScalarFieldEnum[]
   }
 
   /**
-   * contacto findFirstOrThrow
+   * mensaje findFirstOrThrow
    */
-  export type contactoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the contacto
+     * Select specific fields to fetch from the mensaje
      */
-    select?: contactoSelect<ExtArgs> | null
+    select?: mensajeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the contacto
+     * Omit specific fields from the mensaje
      */
-    omit?: contactoOmit<ExtArgs> | null
+    omit?: mensajeOmit<ExtArgs> | null
     /**
-     * Filter, which contacto to fetch.
+     * Filter, which mensaje to fetch.
      */
-    where?: contactoWhereInput
+    where?: mensajeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of contactos to fetch.
+     * Determine the order of mensajes to fetch.
      */
-    orderBy?: contactoOrderByWithRelationInput | contactoOrderByWithRelationInput[]
+    orderBy?: mensajeOrderByWithRelationInput | mensajeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for contactos.
+     * Sets the position for searching for mensajes.
      */
-    cursor?: contactoWhereUniqueInput
+    cursor?: mensajeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` contactos from the position of the cursor.
+     * Take `±n` mensajes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` contactos.
+     * Skip the first `n` mensajes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of contactos.
+     * Filter by unique combinations of mensajes.
      */
-    distinct?: ContactoScalarFieldEnum | ContactoScalarFieldEnum[]
+    distinct?: MensajeScalarFieldEnum | MensajeScalarFieldEnum[]
   }
 
   /**
-   * contacto findMany
+   * mensaje findMany
    */
-  export type contactoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the contacto
+     * Select specific fields to fetch from the mensaje
      */
-    select?: contactoSelect<ExtArgs> | null
+    select?: mensajeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the contacto
+     * Omit specific fields from the mensaje
      */
-    omit?: contactoOmit<ExtArgs> | null
+    omit?: mensajeOmit<ExtArgs> | null
     /**
-     * Filter, which contactos to fetch.
+     * Filter, which mensajes to fetch.
      */
-    where?: contactoWhereInput
+    where?: mensajeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of contactos to fetch.
+     * Determine the order of mensajes to fetch.
      */
-    orderBy?: contactoOrderByWithRelationInput | contactoOrderByWithRelationInput[]
+    orderBy?: mensajeOrderByWithRelationInput | mensajeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing contactos.
+     * Sets the position for listing mensajes.
      */
-    cursor?: contactoWhereUniqueInput
+    cursor?: mensajeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` contactos from the position of the cursor.
+     * Take `±n` mensajes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` contactos.
+     * Skip the first `n` mensajes.
      */
     skip?: number
-    distinct?: ContactoScalarFieldEnum | ContactoScalarFieldEnum[]
+    distinct?: MensajeScalarFieldEnum | MensajeScalarFieldEnum[]
   }
 
   /**
-   * contacto create
+   * mensaje create
    */
-  export type contactoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the contacto
+     * Select specific fields to fetch from the mensaje
      */
-    select?: contactoSelect<ExtArgs> | null
+    select?: mensajeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the contacto
+     * Omit specific fields from the mensaje
      */
-    omit?: contactoOmit<ExtArgs> | null
+    omit?: mensajeOmit<ExtArgs> | null
     /**
-     * The data needed to create a contacto.
+     * The data needed to create a mensaje.
      */
-    data: XOR<contactoCreateInput, contactoUncheckedCreateInput>
+    data: XOR<mensajeCreateInput, mensajeUncheckedCreateInput>
   }
 
   /**
-   * contacto createMany
+   * mensaje createMany
    */
-  export type contactoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many contactos.
+     * The data used to create many mensajes.
      */
-    data: contactoCreateManyInput | contactoCreateManyInput[]
+    data: mensajeCreateManyInput | mensajeCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * contacto update
+   * mensaje update
    */
-  export type contactoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the contacto
+     * Select specific fields to fetch from the mensaje
      */
-    select?: contactoSelect<ExtArgs> | null
+    select?: mensajeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the contacto
+     * Omit specific fields from the mensaje
      */
-    omit?: contactoOmit<ExtArgs> | null
+    omit?: mensajeOmit<ExtArgs> | null
     /**
-     * The data needed to update a contacto.
+     * The data needed to update a mensaje.
      */
-    data: XOR<contactoUpdateInput, contactoUncheckedUpdateInput>
+    data: XOR<mensajeUpdateInput, mensajeUncheckedUpdateInput>
     /**
-     * Choose, which contacto to update.
+     * Choose, which mensaje to update.
      */
-    where: contactoWhereUniqueInput
+    where: mensajeWhereUniqueInput
   }
 
   /**
-   * contacto updateMany
+   * mensaje updateMany
    */
-  export type contactoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update contactos.
+     * The data used to update mensajes.
      */
-    data: XOR<contactoUpdateManyMutationInput, contactoUncheckedUpdateManyInput>
+    data: XOR<mensajeUpdateManyMutationInput, mensajeUncheckedUpdateManyInput>
     /**
-     * Filter which contactos to update
+     * Filter which mensajes to update
      */
-    where?: contactoWhereInput
+    where?: mensajeWhereInput
     /**
-     * Limit how many contactos to update.
+     * Limit how many mensajes to update.
      */
     limit?: number
   }
 
   /**
-   * contacto upsert
+   * mensaje upsert
    */
-  export type contactoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the contacto
+     * Select specific fields to fetch from the mensaje
      */
-    select?: contactoSelect<ExtArgs> | null
+    select?: mensajeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the contacto
+     * Omit specific fields from the mensaje
      */
-    omit?: contactoOmit<ExtArgs> | null
+    omit?: mensajeOmit<ExtArgs> | null
     /**
-     * The filter to search for the contacto to update in case it exists.
+     * The filter to search for the mensaje to update in case it exists.
      */
-    where: contactoWhereUniqueInput
+    where: mensajeWhereUniqueInput
     /**
-     * In case the contacto found by the `where` argument doesn't exist, create a new contacto with this data.
+     * In case the mensaje found by the `where` argument doesn't exist, create a new mensaje with this data.
      */
-    create: XOR<contactoCreateInput, contactoUncheckedCreateInput>
+    create: XOR<mensajeCreateInput, mensajeUncheckedCreateInput>
     /**
-     * In case the contacto was found with the provided `where` argument, update it with this data.
+     * In case the mensaje was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<contactoUpdateInput, contactoUncheckedUpdateInput>
+    update: XOR<mensajeUpdateInput, mensajeUncheckedUpdateInput>
   }
 
   /**
-   * contacto delete
+   * mensaje delete
    */
-  export type contactoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the contacto
+     * Select specific fields to fetch from the mensaje
      */
-    select?: contactoSelect<ExtArgs> | null
+    select?: mensajeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the contacto
+     * Omit specific fields from the mensaje
      */
-    omit?: contactoOmit<ExtArgs> | null
+    omit?: mensajeOmit<ExtArgs> | null
     /**
-     * Filter which contacto to delete.
+     * Filter which mensaje to delete.
      */
-    where: contactoWhereUniqueInput
+    where: mensajeWhereUniqueInput
   }
 
   /**
-   * contacto deleteMany
+   * mensaje deleteMany
    */
-  export type contactoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which contactos to delete
+     * Filter which mensajes to delete
      */
-    where?: contactoWhereInput
+    where?: mensajeWhereInput
     /**
-     * Limit how many contactos to delete.
+     * Limit how many mensajes to delete.
      */
     limit?: number
   }
 
   /**
-   * contacto without action
+   * mensaje without action
    */
-  export type contactoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type mensajeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the contacto
+     * Select specific fields to fetch from the mensaje
      */
-    select?: contactoSelect<ExtArgs> | null
+    select?: mensajeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the contacto
+     * Omit specific fields from the mensaje
      */
-    omit?: contactoOmit<ExtArgs> | null
+    omit?: mensajeOmit<ExtArgs> | null
   }
 
 
@@ -6082,14 +6093,15 @@ export namespace Prisma {
   export type CargoScalarFieldEnum = (typeof CargoScalarFieldEnum)[keyof typeof CargoScalarFieldEnum]
 
 
-  export const ContactoScalarFieldEnum: {
+  export const MensajeScalarFieldEnum: {
     correo: 'correo',
     nombre: 'nombre',
     asunto: 'asunto',
-    mensaje: 'mensaje'
+    mensaje: 'mensaje',
+    fecha: 'fecha'
   };
 
-  export type ContactoScalarFieldEnum = (typeof ContactoScalarFieldEnum)[keyof typeof ContactoScalarFieldEnum]
+  export type MensajeScalarFieldEnum = (typeof MensajeScalarFieldEnum)[keyof typeof MensajeScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6153,14 +6165,14 @@ export namespace Prisma {
   export type CargoOrderByRelevanceFieldEnum = (typeof CargoOrderByRelevanceFieldEnum)[keyof typeof CargoOrderByRelevanceFieldEnum]
 
 
-  export const contactoOrderByRelevanceFieldEnum: {
+  export const mensajeOrderByRelevanceFieldEnum: {
     correo: 'correo',
     nombre: 'nombre',
     asunto: 'asunto',
     mensaje: 'mensaje'
   };
 
-  export type contactoOrderByRelevanceFieldEnum = (typeof contactoOrderByRelevanceFieldEnum)[keyof typeof contactoOrderByRelevanceFieldEnum]
+  export type mensajeOrderByRelevanceFieldEnum = (typeof mensajeOrderByRelevanceFieldEnum)[keyof typeof mensajeOrderByRelevanceFieldEnum]
 
 
   /**
@@ -6469,52 +6481,57 @@ export namespace Prisma {
     departamento?: StringWithAggregatesFilter<"Cargo"> | string
   }
 
-  export type contactoWhereInput = {
-    AND?: contactoWhereInput | contactoWhereInput[]
-    OR?: contactoWhereInput[]
-    NOT?: contactoWhereInput | contactoWhereInput[]
-    correo?: StringFilter<"contacto"> | string
-    nombre?: StringFilter<"contacto"> | string
-    asunto?: StringFilter<"contacto"> | string
-    mensaje?: StringFilter<"contacto"> | string
+  export type mensajeWhereInput = {
+    AND?: mensajeWhereInput | mensajeWhereInput[]
+    OR?: mensajeWhereInput[]
+    NOT?: mensajeWhereInput | mensajeWhereInput[]
+    correo?: StringFilter<"mensaje"> | string
+    nombre?: StringFilter<"mensaje"> | string
+    asunto?: StringFilter<"mensaje"> | string
+    mensaje?: StringFilter<"mensaje"> | string
+    fecha?: DateTimeFilter<"mensaje"> | Date | string
   }
 
-  export type contactoOrderByWithRelationInput = {
+  export type mensajeOrderByWithRelationInput = {
     correo?: SortOrder
     nombre?: SortOrder
     asunto?: SortOrder
     mensaje?: SortOrder
-    _relevance?: contactoOrderByRelevanceInput
+    fecha?: SortOrder
+    _relevance?: mensajeOrderByRelevanceInput
   }
 
-  export type contactoWhereUniqueInput = Prisma.AtLeast<{
+  export type mensajeWhereUniqueInput = Prisma.AtLeast<{
     correo?: string
-    AND?: contactoWhereInput | contactoWhereInput[]
-    OR?: contactoWhereInput[]
-    NOT?: contactoWhereInput | contactoWhereInput[]
-    nombre?: StringFilter<"contacto"> | string
-    asunto?: StringFilter<"contacto"> | string
-    mensaje?: StringFilter<"contacto"> | string
+    AND?: mensajeWhereInput | mensajeWhereInput[]
+    OR?: mensajeWhereInput[]
+    NOT?: mensajeWhereInput | mensajeWhereInput[]
+    nombre?: StringFilter<"mensaje"> | string
+    asunto?: StringFilter<"mensaje"> | string
+    mensaje?: StringFilter<"mensaje"> | string
+    fecha?: DateTimeFilter<"mensaje"> | Date | string
   }, "correo">
 
-  export type contactoOrderByWithAggregationInput = {
+  export type mensajeOrderByWithAggregationInput = {
     correo?: SortOrder
     nombre?: SortOrder
     asunto?: SortOrder
     mensaje?: SortOrder
-    _count?: contactoCountOrderByAggregateInput
-    _max?: contactoMaxOrderByAggregateInput
-    _min?: contactoMinOrderByAggregateInput
+    fecha?: SortOrder
+    _count?: mensajeCountOrderByAggregateInput
+    _max?: mensajeMaxOrderByAggregateInput
+    _min?: mensajeMinOrderByAggregateInput
   }
 
-  export type contactoScalarWhereWithAggregatesInput = {
-    AND?: contactoScalarWhereWithAggregatesInput | contactoScalarWhereWithAggregatesInput[]
-    OR?: contactoScalarWhereWithAggregatesInput[]
-    NOT?: contactoScalarWhereWithAggregatesInput | contactoScalarWhereWithAggregatesInput[]
-    correo?: StringWithAggregatesFilter<"contacto"> | string
-    nombre?: StringWithAggregatesFilter<"contacto"> | string
-    asunto?: StringWithAggregatesFilter<"contacto"> | string
-    mensaje?: StringWithAggregatesFilter<"contacto"> | string
+  export type mensajeScalarWhereWithAggregatesInput = {
+    AND?: mensajeScalarWhereWithAggregatesInput | mensajeScalarWhereWithAggregatesInput[]
+    OR?: mensajeScalarWhereWithAggregatesInput[]
+    NOT?: mensajeScalarWhereWithAggregatesInput | mensajeScalarWhereWithAggregatesInput[]
+    correo?: StringWithAggregatesFilter<"mensaje"> | string
+    nombre?: StringWithAggregatesFilter<"mensaje"> | string
+    asunto?: StringWithAggregatesFilter<"mensaje"> | string
+    mensaje?: StringWithAggregatesFilter<"mensaje"> | string
+    fecha?: DateTimeWithAggregatesFilter<"mensaje"> | Date | string
   }
 
   export type UsuarioCreateInput = {
@@ -6793,53 +6810,60 @@ export namespace Prisma {
     departamento?: StringFieldUpdateOperationsInput | string
   }
 
-  export type contactoCreateInput = {
+  export type mensajeCreateInput = {
     correo: string
     nombre: string
     asunto: string
     mensaje: string
+    fecha?: Date | string
   }
 
-  export type contactoUncheckedCreateInput = {
+  export type mensajeUncheckedCreateInput = {
     correo: string
     nombre: string
     asunto: string
     mensaje: string
+    fecha?: Date | string
   }
 
-  export type contactoUpdateInput = {
+  export type mensajeUpdateInput = {
     correo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     asunto?: StringFieldUpdateOperationsInput | string
     mensaje?: StringFieldUpdateOperationsInput | string
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type contactoUncheckedUpdateInput = {
+  export type mensajeUncheckedUpdateInput = {
     correo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     asunto?: StringFieldUpdateOperationsInput | string
     mensaje?: StringFieldUpdateOperationsInput | string
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type contactoCreateManyInput = {
+  export type mensajeCreateManyInput = {
     correo: string
     nombre: string
     asunto: string
     mensaje: string
+    fecha?: Date | string
   }
 
-  export type contactoUpdateManyMutationInput = {
+  export type mensajeUpdateManyMutationInput = {
     correo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     asunto?: StringFieldUpdateOperationsInput | string
     mensaje?: StringFieldUpdateOperationsInput | string
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type contactoUncheckedUpdateManyInput = {
+  export type mensajeUncheckedUpdateManyInput = {
     correo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     asunto?: StringFieldUpdateOperationsInput | string
     mensaje?: StringFieldUpdateOperationsInput | string
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -7161,31 +7185,34 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type contactoOrderByRelevanceInput = {
-    fields: contactoOrderByRelevanceFieldEnum | contactoOrderByRelevanceFieldEnum[]
+  export type mensajeOrderByRelevanceInput = {
+    fields: mensajeOrderByRelevanceFieldEnum | mensajeOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type contactoCountOrderByAggregateInput = {
+  export type mensajeCountOrderByAggregateInput = {
     correo?: SortOrder
     nombre?: SortOrder
     asunto?: SortOrder
     mensaje?: SortOrder
+    fecha?: SortOrder
   }
 
-  export type contactoMaxOrderByAggregateInput = {
+  export type mensajeMaxOrderByAggregateInput = {
     correo?: SortOrder
     nombre?: SortOrder
     asunto?: SortOrder
     mensaje?: SortOrder
+    fecha?: SortOrder
   }
 
-  export type contactoMinOrderByAggregateInput = {
+  export type mensajeMinOrderByAggregateInput = {
     correo?: SortOrder
     nombre?: SortOrder
     asunto?: SortOrder
     mensaje?: SortOrder
+    fecha?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {

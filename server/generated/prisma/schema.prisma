@@ -52,11 +52,12 @@ model Cargo {
   empleados    Empleado[]
 }
 
-model contacto {
-  correo  String @id
+model mensaje {
+  correo  String   @id
   nombre  String
   asunto  String
   mensaje String
+  fecha   DateTime @default(now())
 }
 
 enum Rol {

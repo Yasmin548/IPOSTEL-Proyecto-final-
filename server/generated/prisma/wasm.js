@@ -159,11 +159,12 @@ exports.Prisma.CargoScalarFieldEnum = {
   departamento: 'departamento'
 };
 
-exports.Prisma.ContactoScalarFieldEnum = {
+exports.Prisma.MensajeScalarFieldEnum = {
   correo: 'correo',
   nombre: 'nombre',
   asunto: 'asunto',
-  mensaje: 'mensaje'
+  mensaje: 'mensaje',
+  fecha: 'fecha'
 };
 
 exports.Prisma.SortOrder = {
@@ -209,7 +210,7 @@ exports.Prisma.CargoOrderByRelevanceFieldEnum = {
   departamento: 'departamento'
 };
 
-exports.Prisma.contactoOrderByRelevanceFieldEnum = {
+exports.Prisma.mensajeOrderByRelevanceFieldEnum = {
   correo: 'correo',
   nombre: 'nombre',
   asunto: 'asunto',
@@ -226,7 +227,7 @@ exports.Prisma.ModelName = {
   Empleado: 'Empleado',
   Sucursal: 'Sucursal',
   Cargo: 'Cargo',
-  contacto: 'contacto'
+  mensaje: 'mensaje'
 };
 
 /**
