@@ -14,7 +14,7 @@ declare module "express-serve-static-core"{
 
 export const verifyUser = (req:Request, res:Response, next:NextFunction)=>{
     try {
-        const token = req.cookies?.token
+        const token = req.cookies['Acces-Token']
 
         if(!token){
             throw res.status(400).json({message:"No se ha podido obtener el token"})
