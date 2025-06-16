@@ -4,12 +4,13 @@ import { validateClass } from "../middlewares/validateClass.middleware"
 import { createUserDTO, logUserDTO, updateUserDTO } from "../DTO/user.dto"
 import { sendResponse } from "../utils/sendResponse.util"
 import { verifyData } from "../utils/jwt.utils"
+import { verifyUser } from "../middlewares/token.middleware"
 
 const authRouter = express.Router()
 const controller = new AuthController()
 
 authRouter
-.post('/register',validateClass(createUserDTO), async(req:Request, res:Response)=>{
+.post('/register',verifyUser, validateClass(createUserDTO), async(req:Request, res:Response)=>{
     const user = req.body
     const response = await controller.createUserController(user)
     sendResponse(res, response)
@@ -33,7 +34,7 @@ authRouter
     }
     sendResponse(res, response)
 })
-.put('/password', validateClass(updateUserDTO), async (req:Request, res:Response)=>{
+.put('/password', verifyUser, validateClass(updateUserDTO), async (req:Request, res:Response)=>{
     const token= req.cookies['Acces-Token']
     const decoded =  verifyData(token)
     const correo = decoded.email

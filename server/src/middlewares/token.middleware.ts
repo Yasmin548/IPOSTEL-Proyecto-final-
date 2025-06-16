@@ -17,7 +17,7 @@ export const verifyUser = (req:Request, res:Response, next:NextFunction)=>{
         const token = req.cookies?.token
 
         if(!token){
-            return res.status(400).json({message:"No se ha podido obtener el token"})
+            throw res.status(400).json({message:"No se ha podido obtener el token"})
         }
 
         const data = verifyData(token)
