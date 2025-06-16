@@ -2,6 +2,7 @@ import Prisma from "../config/prisma.config";
 
 
 export const messageListService = async(page:number, limit:number)=>{
+    //calcula cuantos registros se va a saltar
     const skip = (page - 1) * limit;
     
     // Obtener el total de registros
@@ -10,7 +11,8 @@ export const messageListService = async(page:number, limit:number)=>{
     // Obtener las mensajes paginados
     const messages = await Prisma.mensaje.findMany({
         skip,
-        take: limit
+        take: limit,
+        orderBy:{fecha:"desc"}
     });
     
     // Calcular información de paginación
