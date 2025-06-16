@@ -160,6 +160,7 @@ exports.Prisma.CargoScalarFieldEnum = {
 };
 
 exports.Prisma.MensajeScalarFieldEnum = {
+  id: 'id',
   correo: 'correo',
   nombre: 'nombre',
   asunto: 'asunto',

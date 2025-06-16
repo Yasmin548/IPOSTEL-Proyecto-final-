@@ -5152,11 +5152,22 @@ export namespace Prisma {
 
   export type AggregateMensaje = {
     _count: MensajeCountAggregateOutputType | null
+    _avg: MensajeAvgAggregateOutputType | null
+    _sum: MensajeSumAggregateOutputType | null
     _min: MensajeMinAggregateOutputType | null
     _max: MensajeMaxAggregateOutputType | null
   }
 
+  export type MensajeAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type MensajeSumAggregateOutputType = {
+    id: number | null
+  }
+
   export type MensajeMinAggregateOutputType = {
+    id: number | null
     correo: string | null
     nombre: string | null
     asunto: string | null
@@ -5165,6 +5176,7 @@ export namespace Prisma {
   }
 
   export type MensajeMaxAggregateOutputType = {
+    id: number | null
     correo: string | null
     nombre: string | null
     asunto: string | null
@@ -5173,6 +5185,7 @@ export namespace Prisma {
   }
 
   export type MensajeCountAggregateOutputType = {
+    id: number
     correo: number
     nombre: number
     asunto: number
@@ -5182,7 +5195,16 @@ export namespace Prisma {
   }
 
 
+  export type MensajeAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type MensajeSumAggregateInputType = {
+    id?: true
+  }
+
   export type MensajeMinAggregateInputType = {
+    id?: true
     correo?: true
     nombre?: true
     asunto?: true
@@ -5191,6 +5213,7 @@ export namespace Prisma {
   }
 
   export type MensajeMaxAggregateInputType = {
+    id?: true
     correo?: true
     nombre?: true
     asunto?: true
@@ -5199,6 +5222,7 @@ export namespace Prisma {
   }
 
   export type MensajeCountAggregateInputType = {
+    id?: true
     correo?: true
     nombre?: true
     asunto?: true
@@ -5245,6 +5269,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: MensajeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MensajeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: MensajeMinAggregateInputType
@@ -5275,17 +5311,22 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: MensajeCountAggregateInputType | true
+    _avg?: MensajeAvgAggregateInputType
+    _sum?: MensajeSumAggregateInputType
     _min?: MensajeMinAggregateInputType
     _max?: MensajeMaxAggregateInputType
   }
 
   export type MensajeGroupByOutputType = {
+    id: number
     correo: string
     nombre: string
     asunto: string
     mensaje: string
     fecha: Date
     _count: MensajeCountAggregateOutputType | null
+    _avg: MensajeAvgAggregateOutputType | null
+    _sum: MensajeSumAggregateOutputType | null
     _min: MensajeMinAggregateOutputType | null
     _max: MensajeMaxAggregateOutputType | null
   }
@@ -5305,6 +5346,7 @@ export namespace Prisma {
 
 
   export type mensajeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     correo?: boolean
     nombre?: boolean
     asunto?: boolean
@@ -5315,6 +5357,7 @@ export namespace Prisma {
 
 
   export type mensajeSelectScalar = {
+    id?: boolean
     correo?: boolean
     nombre?: boolean
     asunto?: boolean
@@ -5322,12 +5365,13 @@ export namespace Prisma {
     fecha?: boolean
   }
 
-  export type mensajeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"correo" | "nombre" | "asunto" | "mensaje" | "fecha", ExtArgs["result"]["mensaje"]>
+  export type mensajeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "correo" | "nombre" | "asunto" | "mensaje" | "fecha", ExtArgs["result"]["mensaje"]>
 
   export type $mensajePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "mensaje"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
+      id: number
       correo: string
       nombre: string
       asunto: string
@@ -5416,8 +5460,8 @@ export namespace Prisma {
      * // Get first 10 Mensajes
      * const mensajes = await prisma.mensaje.findMany({ take: 10 })
      * 
-     * // Only select the `correo`
-     * const mensajeWithCorreoOnly = await prisma.mensaje.findMany({ select: { correo: true } })
+     * // Only select the `id`
+     * const mensajeWithIdOnly = await prisma.mensaje.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends mensajeFindManyArgs>(args?: SelectSubset<T, mensajeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mensajePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -5702,6 +5746,7 @@ export namespace Prisma {
    * Fields of the mensaje model
    */
   interface mensajeFieldRefs {
+    readonly id: FieldRef<"mensaje", 'Int'>
     readonly correo: FieldRef<"mensaje", 'String'>
     readonly nombre: FieldRef<"mensaje", 'String'>
     readonly asunto: FieldRef<"mensaje", 'String'>
@@ -6094,6 +6139,7 @@ export namespace Prisma {
 
 
   export const MensajeScalarFieldEnum: {
+    id: 'id',
     correo: 'correo',
     nombre: 'nombre',
     asunto: 'asunto',
@@ -6485,6 +6531,7 @@ export namespace Prisma {
     AND?: mensajeWhereInput | mensajeWhereInput[]
     OR?: mensajeWhereInput[]
     NOT?: mensajeWhereInput | mensajeWhereInput[]
+    id?: IntFilter<"mensaje"> | number
     correo?: StringFilter<"mensaje"> | string
     nombre?: StringFilter<"mensaje"> | string
     asunto?: StringFilter<"mensaje"> | string
@@ -6493,6 +6540,7 @@ export namespace Prisma {
   }
 
   export type mensajeOrderByWithRelationInput = {
+    id?: SortOrder
     correo?: SortOrder
     nombre?: SortOrder
     asunto?: SortOrder
@@ -6502,31 +6550,36 @@ export namespace Prisma {
   }
 
   export type mensajeWhereUniqueInput = Prisma.AtLeast<{
-    correo?: string
+    id?: number
     AND?: mensajeWhereInput | mensajeWhereInput[]
     OR?: mensajeWhereInput[]
     NOT?: mensajeWhereInput | mensajeWhereInput[]
+    correo?: StringFilter<"mensaje"> | string
     nombre?: StringFilter<"mensaje"> | string
     asunto?: StringFilter<"mensaje"> | string
     mensaje?: StringFilter<"mensaje"> | string
     fecha?: DateTimeFilter<"mensaje"> | Date | string
-  }, "correo">
+  }, "id">
 
   export type mensajeOrderByWithAggregationInput = {
+    id?: SortOrder
     correo?: SortOrder
     nombre?: SortOrder
     asunto?: SortOrder
     mensaje?: SortOrder
     fecha?: SortOrder
     _count?: mensajeCountOrderByAggregateInput
+    _avg?: mensajeAvgOrderByAggregateInput
     _max?: mensajeMaxOrderByAggregateInput
     _min?: mensajeMinOrderByAggregateInput
+    _sum?: mensajeSumOrderByAggregateInput
   }
 
   export type mensajeScalarWhereWithAggregatesInput = {
     AND?: mensajeScalarWhereWithAggregatesInput | mensajeScalarWhereWithAggregatesInput[]
     OR?: mensajeScalarWhereWithAggregatesInput[]
     NOT?: mensajeScalarWhereWithAggregatesInput | mensajeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"mensaje"> | number
     correo?: StringWithAggregatesFilter<"mensaje"> | string
     nombre?: StringWithAggregatesFilter<"mensaje"> | string
     asunto?: StringWithAggregatesFilter<"mensaje"> | string
@@ -6819,6 +6872,7 @@ export namespace Prisma {
   }
 
   export type mensajeUncheckedCreateInput = {
+    id?: number
     correo: string
     nombre: string
     asunto: string
@@ -6835,6 +6889,7 @@ export namespace Prisma {
   }
 
   export type mensajeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     correo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     asunto?: StringFieldUpdateOperationsInput | string
@@ -6843,6 +6898,7 @@ export namespace Prisma {
   }
 
   export type mensajeCreateManyInput = {
+    id?: number
     correo: string
     nombre: string
     asunto: string
@@ -6859,6 +6915,7 @@ export namespace Prisma {
   }
 
   export type mensajeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
     correo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     asunto?: StringFieldUpdateOperationsInput | string
@@ -7192,6 +7249,7 @@ export namespace Prisma {
   }
 
   export type mensajeCountOrderByAggregateInput = {
+    id?: SortOrder
     correo?: SortOrder
     nombre?: SortOrder
     asunto?: SortOrder
@@ -7199,7 +7257,12 @@ export namespace Prisma {
     fecha?: SortOrder
   }
 
+  export type mensajeAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type mensajeMaxOrderByAggregateInput = {
+    id?: SortOrder
     correo?: SortOrder
     nombre?: SortOrder
     asunto?: SortOrder
@@ -7208,11 +7271,16 @@ export namespace Prisma {
   }
 
   export type mensajeMinOrderByAggregateInput = {
+    id?: SortOrder
     correo?: SortOrder
     nombre?: SortOrder
     asunto?: SortOrder
     mensaje?: SortOrder
     fecha?: SortOrder
+  }
+
+  export type mensajeSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {

@@ -53,11 +53,15 @@ model Cargo {
 }
 
 model mensaje {
-  correo  String   @id
+  id      Int      @id @default(autoincrement())
+  correo  String
   nombre  String
   asunto  String
   mensaje String
   fecha   DateTime @default(now())
+
+  @@index([correo])
+  @@index([fecha])
 }
 
 enum Rol {
