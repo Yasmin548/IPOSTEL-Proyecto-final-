@@ -4,14 +4,15 @@ import { cargoRouter } from "./cargo.route";
 import sucursalRouter from "./sucursal.route";
 import authRouter from "./auth.route";
 import userRouter from "./user.route"
+import { verifyUser } from "../middlewares/token.middleware";
 
 const indexRouter = express.Router();
 
 indexRouter.get("/", ()=>{});
-indexRouter.use("/empleados", empleadoRouter);
-indexRouter.use('/cargos', cargoRouter)
-indexRouter.use("/sucursal",sucursalRouter)
+indexRouter.use("/empleados", verifyUser, empleadoRouter);
+indexRouter.use('/cargos', verifyUser, cargoRouter)
+indexRouter.use("/sucursal", verifyUser, sucursalRouter)
 indexRouter.use("/auth", authRouter)
-indexRouter.use("/user", userRouter)
+indexRouter.use("/user", verifyUser, userRouter)
 
 export default indexRouter;
