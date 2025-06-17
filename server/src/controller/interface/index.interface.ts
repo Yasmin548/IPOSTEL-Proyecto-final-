@@ -6,8 +6,7 @@ import { adminUpdateUserDTO, createUserDTO, logUserDTO, updateUserDTO } from "..
 import { IFunctionResponse, IPagination, TCargo, TEmpleado, TMessage, TSucursal, TUsuario } from "../../types/index.types";
 
 export interface IEmpleadoController{
-    empleadoListController():Promise <IFunctionResponse<TEmpleado[] | null>>
-    empleadoListPaginatedController(req: any):Promise <IFunctionResponse<any>>
+    empleadoListController(page:number, limit:number):Promise <IFunctionResponse<{empleados:TEmpleado[], pagination:IPagination}>>
     searchEmpleadoByIDController(dni:string):Promise<IFunctionResponse<TEmpleado | null>>
     createEmpleadoController(empleado:createEmpleadoDTO):Promise<IFunctionResponse<TEmpleado>>
     updateEmpleadoController(dni:string, empleado:updateEmpleadoDTO):Promise<IFunctionResponse<TEmpleado>>
@@ -25,7 +24,7 @@ export interface ICargoController{
 }
 
 export interface ISucursalController{
-    sucursalListController(page:number, limit:number):Promise<IFunctionResponse<any>>
+    sucursalListController(page:number, limit:number):Promise<IFunctionResponse<{sucursales:TSucursal[], pagination:IPagination}>>
     searchSucursalByIDController(rif:string):Promise<IFunctionResponse<TSucursal | null>>
     createSucursalController(sucursal:createSucursalDTO):Promise<IFunctionResponse<TSucursal>>
     updateSucursalController(rif:string, sucursal:updateSucursalDTO):Promise<IFunctionResponse<TSucursal>>

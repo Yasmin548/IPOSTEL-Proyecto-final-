@@ -1,6 +1,6 @@
 import { createEmpleadoDTO, updateEmpleadoDTO } from "../DTO/empleado.dto";
-import { createEmpleadoService, deleteEmpleadoService, empleadoListPaginatedService, empleadoListService, searchEmpleadoByIDService, updateEmpleadoService } from "../services/empleado.service";
-import { IFunctionResponse, TEmpleado } from "../types/index.types";
+import { createEmpleadoService, deleteEmpleadoService, empleadoListService, searchEmpleadoByIDService, updateEmpleadoService } from "../services/empleado.service";
+import { IFunctionResponse, IPagination, TEmpleado } from "../types/index.types";
 import { safe } from "../wrapper/safe.wrapper";
 import { IEmpleadoController } from "./interface/index.interface";
 import { findSucursalByID } from "../services/sucursal.service";
@@ -9,10 +9,10 @@ import { findCargoByIDService } from "../services/cargo.service";
 
 export class EmpleadoController implements IEmpleadoController{
 
-  public async empleadoListController(): Promise<IFunctionResponse<TEmpleado[] | null>> {
+  public async empleadoListController(page:number, limit:number): Promise<IFunctionResponse<{empleados:TEmpleado[], pagination:IPagination} >> {
     return safe(
       async () => {
-        const empleados = await empleadoListService();
+        const empleados = await empleadoListService(page, limit);
         if(!empleados){
           throw{
             status:404,
@@ -20,7 +20,7 @@ export class EmpleadoController implements IEmpleadoController{
             error:"No content"
           }
         }
-        return empleados
+        return {empleados:empleados.data, pagination:empleados.pagination}
       },
       {
         successStatus: 200,
@@ -29,32 +29,6 @@ export class EmpleadoController implements IEmpleadoController{
     );
   }
 
-  public async empleadoListPaginatedController(req: any): Promise<IFunctionResponse<any>> {
-    return safe(
-      async () => {
-        // Obtener parámetros de paginación de la query
-        const page = req.query.page ? parseInt(req.query.page) : 1;
-        const limit = req.query.limit ? parseInt(req.query.limit) : 10;
-        
-        // Obtener empleados paginados
-        const result = await empleadoListPaginatedService(page, limit);
-        
-        if (!result.data || result.data.length === 0) {
-          throw {
-            status: 404,
-            message: "No hay empleados registrados",
-            error: "No content"
-          }
-        }
-        
-        return result;
-      },
-      {
-        successStatus: 200,
-        successMessage: 'Lista de Empleados Paginada',
-      },
-    );
-  }
 
   public async searchEmpleadoByIDController(dni: string): Promise<IFunctionResponse<TEmpleado | null>> {
     return safe(async ()=>{

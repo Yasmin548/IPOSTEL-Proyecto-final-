@@ -1,12 +1,12 @@
 import { createSucursalDTO, updateSucursalDTO } from "../DTO/sucursal.dto";
 import { createSucursalService, deleteSucursalService, findSucursalByID, sucursalListPaginatedService, sucursalListService, updateSucursalService } from "../services/sucursal.service";
-import { IFunctionResponse, TSucursal } from "../types/index.types";
+import { IFunctionResponse, IPagination, TSucursal } from "../types/index.types";
 import { safe } from "../wrapper/safe.wrapper";
 import { ISucursalController } from "./interface/index.interface";
 
 export class sucursalController implements ISucursalController{
     
-    public async sucursalListController(page:number, limit:number): Promise<IFunctionResponse<any>> {
+    public async sucursalListController(page:number, limit:number): Promise<IFunctionResponse<{sucursales:TSucursal[], pagination:IPagination}>> {
         return safe(async()=>{
             // Obtener sucursales paginadas
             const sucursales = await sucursalListPaginatedService(page, limit);
@@ -19,7 +19,7 @@ export class sucursalController implements ISucursalController{
                 }
             }
             
-            return sucursales;
+            return {sucursales:sucursales.data, pagination:sucursales.pagination};
         },{
             successStatus:200,
             successMessage:`Lista de Sucursales Paginada`

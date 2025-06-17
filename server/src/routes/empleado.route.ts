@@ -11,18 +11,10 @@ const controller = new EmpleadoController
 
 empleadoRouter
 .get("/", async(req:Request, res: Response)=>{
-    // Si hay parámetros de paginación, usar la versión paginada
-    if (req.query.page || req.query.limit) {
-        const response = await controller.empleadoListPaginatedController(req);
-        sendResponse(res, response);
-    } else {
-        const response = await controller.empleadoListController();
-        sendResponse(res, response);
-    }
-})
-.get("/paginated", async(req:Request, res: Response)=>{
-    const response = await controller.empleadoListPaginatedController(req);
-    sendResponse(res, response);
+    const page = req.query.page? Number(req.query.page) : 1
+    const limit = req.query.limit? Number(req.query.limit) : 10
+    const response = await controller.empleadoListController(page, limit)  
+    sendResponse(res, response)
 })
 .get("/:dni", async(req:Request, res:Response)=>{
     const dni = req.params.dni
