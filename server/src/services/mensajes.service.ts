@@ -1,4 +1,5 @@
 import Prisma from "../config/prisma.config";
+import { createMessageDto } from "../DTO/mensajes.dto";
 
 
 export const messageListService = async(page:number, limit:number)=>{
@@ -31,3 +32,9 @@ export const messageListService = async(page:number, limit:number)=>{
     };
 }
 
+export const createMessageService= async(message:createMessageDto)=>{
+    const newMessage = await Prisma.mensaje.create({
+        data:message
+    })
+    return newMessage
+}

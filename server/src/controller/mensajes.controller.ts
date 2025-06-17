@@ -1,5 +1,6 @@
 import Prisma from "../config/prisma.config";
-import { messageListService } from "../services/mensajes.service";
+import { createMessageDto } from "../DTO/mensajes.dto";
+import { createMessageService, messageListService } from "../services/mensajes.service";
 import { IFunctionResponse, TMessage, IPagination } from "../types/index.types";
 import { safe } from "../wrapper/safe.wrapper";
 import { IMessageController } from "./interface/index.interface";
@@ -25,12 +26,12 @@ export class MessageController implements IMessageController{
             successMessage:"Lista de mensajes"
         })
     }
+
+    public async createMessageController(message: createMessageDto): Promise<IFunctionResponse<TMessage>> {
+        return safe(async()=>{
+            return await createMessageService(message)
+        })
+    }
 }
 
 
-export const createMessage= async(message:any)=>{
-    const newMessage = await Prisma.mensaje.create({
-        data:message
-    })
-    return newMessage
-}

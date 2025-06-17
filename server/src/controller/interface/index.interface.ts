@@ -1,5 +1,6 @@
 import { createCargoDTO, updateCargoDTO } from "../../DTO/cargo.dto";
 import { createEmpleadoDTO, updateEmpleadoDTO } from "../../DTO/empleado.dto";
+import { createMessageDto } from "../../DTO/mensajes.dto";
 import { createSucursalDTO, updateSucursalDTO } from "../../DTO/sucursal.dto";
 import { adminUpdateUserDTO, createUserDTO, logUserDTO, updateUserDTO } from "../../DTO/user.dto";
 import { IFunctionResponse, IPagination, TCargo, TEmpleado, TMessage, TSucursal, TUsuario } from "../../types/index.types";
@@ -46,4 +47,5 @@ export interface IUserController{
 
 export interface IMessageController{
     messageListController(page:number, limit:number):Promise<IFunctionResponse<{messages:TMessage[], Pagination:IPagination}>>
+    createMessageController(message:createMessageDto):Promise<IFunctionResponse<TMessage>>
 }

@@ -13,5 +13,10 @@ messageRouter
     const response = await controller.messageListController(page, limit)
     sendResponse(res, response)
 })
+.post("/", async(req:Request, res:Response)=>{
+    const message = req.body
+    const response = await controller.createMessageController(message)
+    sendResponse(res, response)
+})
 
 export default messageRouter
