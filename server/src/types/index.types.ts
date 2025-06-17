@@ -15,3 +15,12 @@ export interface IFunctionResponse<T> {
     data?: T,
     token?: string
 }
+
+export interface IPagination{
+    total:number,
+    page:number,
+    limit:number,
+    totalPages:number,
+    hasNextPage: boolean,
+    hasPrevPage: boolean
+}

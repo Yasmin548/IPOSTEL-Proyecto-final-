@@ -2,7 +2,7 @@ import { createCargoDTO, updateCargoDTO } from "../../DTO/cargo.dto";
 import { createEmpleadoDTO, updateEmpleadoDTO } from "../../DTO/empleado.dto";
 import { createSucursalDTO, updateSucursalDTO } from "../../DTO/sucursal.dto";
 import { adminUpdateUserDTO, createUserDTO, logUserDTO, updateUserDTO } from "../../DTO/user.dto";
-import { IFunctionResponse, TCargo, TEmpleado, TSucursal, TUsuario } from "../../types/index.types";
+import { IFunctionResponse, IPagination, TCargo, TEmpleado, TMessage, TSucursal, TUsuario } from "../../types/index.types";
 
 export interface IEmpleadoController{
     empleadoListController():Promise <IFunctionResponse<TEmpleado[] | null>>
@@ -42,4 +42,8 @@ export interface IUserController{
     userListController():Promise<IFunctionResponse<TUsuario[]  | null>>
     searchUserByEmailController(correo:string):Promise<IFunctionResponse<TUsuario | null>>
     updateUserInfoController(correo:string, userData:adminUpdateUserDTO):Promise<IFunctionResponse<TUsuario>>
+}
+
+export interface IMessageController{
+    messageListController(page:number, limit:number):Promise<IFunctionResponse<{messages:TMessage[], Pagination:IPagination}>>
 }
