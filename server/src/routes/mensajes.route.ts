@@ -8,8 +8,8 @@ const controller = new MessageController()
 
 messageRouter
 .get("/",async(req:Request, res:Response)=>{
-    const page= Number(req.query.page)
-    const limit = Number(req.query.limit)
+    const page= req.query.page? Number(req.query.page) : 1 
+    const limit = req.query.limit? Number(req.query.limit) : 10 
     const response = await controller.messageListController(page, limit)
     sendResponse(res, response)
 })

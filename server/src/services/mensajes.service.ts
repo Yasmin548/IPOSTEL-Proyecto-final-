@@ -2,7 +2,7 @@ import Prisma from "../config/prisma.config";
 import { createMessageDto } from "../DTO/mensajes.dto";
 
 
-export const messageListService = async(page:number, limit:number)=>{
+export const messageListService = async(page:number=1, limit:number=5)=>{
     //calcula cuantos registros se va a saltar
     const skip = (page - 1) * limit;
     
@@ -37,4 +37,11 @@ export const createMessageService= async(message:createMessageDto)=>{
         data:message
     })
     return newMessage
+}
+
+export const findByEmail = async(correo:string)=>{
+    const messages = await Prisma.mensaje.findMany({
+        where:{correo:correo}
+    })
+    return messages
 }

@@ -25,8 +25,7 @@ export interface ICargoController{
 }
 
 export interface ISucursalController{
-    sucursalListController():Promise<IFunctionResponse<TSucursal[] | null>>
-    sucursalListPaginatedController(req: any):Promise<IFunctionResponse<any>>
+    sucursalListController(page:number, limit:number):Promise<IFunctionResponse<any>>
     searchSucursalByIDController(rif:string):Promise<IFunctionResponse<TSucursal | null>>
     createSucursalController(sucursal:createSucursalDTO):Promise<IFunctionResponse<TSucursal>>
     updateSucursalController(rif:string, sucursal:updateSucursalDTO):Promise<IFunctionResponse<TSucursal>>

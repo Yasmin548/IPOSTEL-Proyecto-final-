@@ -5,25 +5,13 @@ import { safe } from "../wrapper/safe.wrapper";
 import { ISucursalController } from "./interface/index.interface";
 
 export class sucursalController implements ISucursalController{
-    public async sucursalListController(): Promise<IFunctionResponse<TSucursal[] | null>> {
-        return safe(async()=>{
-            return await sucursalListService()
-        },{
-            successStatus:200,
-            successMessage:`Lista de Sucursales`
-        })
-    }
     
-    public async sucursalListPaginatedController(req: any): Promise<IFunctionResponse<any>> {
+    public async sucursalListController(page:number, limit:number): Promise<IFunctionResponse<any>> {
         return safe(async()=>{
-            // Obtener parámetros de paginación de la query
-            const page = req.query.page ? parseInt(req.query.page) : 1;
-            const limit = req.query.limit ? parseInt(req.query.limit) : 10;
-            
             // Obtener sucursales paginadas
-            const result = await sucursalListPaginatedService(page, limit);
+            const sucursales = await sucursalListPaginatedService(page, limit);
             
-            if (!result.data || result.data.length === 0) {
+            if (!sucursales.data || sucursales.data.length === 0) {
                 throw {
                     status: 404,
                     message: "No hay sucursales registradas",
@@ -31,7 +19,7 @@ export class sucursalController implements ISucursalController{
                 }
             }
             
-            return result;
+            return sucursales;
         },{
             successStatus:200,
             successMessage:`Lista de Sucursales Paginada`
