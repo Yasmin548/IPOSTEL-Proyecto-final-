@@ -1,8 +1,26 @@
 import Prisma from "../config/prisma.config"
 
-export const userListService= async()=>{
-    const userData = await Prisma.usuario.findMany()
-    return userData.length>0? userData : null
+export const userListService= async(page:number, limit:number)=>{
+    const skip = (page-1)*limit
+
+    const total = await Prisma.usuario.count()
+    const users= await Prisma.usuario.findMany({
+        skip, 
+        take:limit
+    })
+
+    const totalPages= Math.ceil(total/limit)
+    return{
+        data:users,
+        pagination:{
+            total,
+            page,
+            limit,
+            totalPages,
+            hasNextPage: page < totalPages,
+            hasPrevPage: page > 1
+        }
+    }
 }
 
 export const findUserByEmail = async(correo:string)=>{

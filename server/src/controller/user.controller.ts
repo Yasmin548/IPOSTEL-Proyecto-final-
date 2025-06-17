@@ -2,15 +2,15 @@ import { adminUpdateUserDTO } from "../DTO/user.dto";
 import { updateUserInfoService } from "../services/auth.service";
 
 import { findUserByEmail, userListService } from "../services/user.service";
-import { IFunctionResponse, TUsuario } from "../types/index.types";
+import { IFunctionResponse, IPagination, TUsuario } from "../types/index.types";
 import { safe } from "../wrapper/safe.wrapper";
 import { IUserController } from "./interface/index.interface";
 
 
 export class UserController implements IUserController{
-    public async userListController(): Promise<IFunctionResponse<TUsuario[] | null>> {
+    public async userListController(page:number, limit:number): Promise<IFunctionResponse<{users:TUsuario[], pagination:IPagination}>> {
         return safe(async()=>{
-            const users = await userListService()
+            const users = await userListService(page, limit)
             if(!users){
                 throw{
                     status:404,
@@ -19,7 +19,7 @@ export class UserController implements IUserController{
                 }
             }
 
-            return users
+            return {users:users.data, pagination:users.pagination}
         },{
             successStatus:200,
             successMessage:"Lista de Usuarios"

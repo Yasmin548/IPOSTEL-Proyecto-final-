@@ -8,7 +8,9 @@ const controller = new UserController()
 const userRouter = express.Router()
 
 userRouter.get("/", async(req:Request, res:Response)=>{
-    const response = await controller.userListController()
+    const page= req.query.page? Number(req.query.page) : 1
+    const limit = req.query.limit? Number(req.query.limit) : 10
+    const response = await controller.userListController(page, limit)
     sendResponse(res, response)
 })
 .get("/:correo", async(req:Request, res:Response)=>{
