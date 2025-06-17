@@ -1,6 +1,6 @@
 import { updateCargoDTO } from "../DTO/cargo.dto";
-import { cargoListPaginatedService, cargoListService, createCargoService, deleteCargoService, findCargoByIDService, findCargoByNameService, updateCargoService } from "../services/cargo.service";
-import { IFunctionResponse, TCargo } from "../types/index.types";
+import { cargoListService, createCargoService, deleteCargoService, findCargoByIDService, findCargoByNameService, updateCargoService } from "../services/cargo.service";
+import { IFunctionResponse, IPagination, TCargo } from "../types/index.types";
 import { safe } from "../wrapper/safe.wrapper";
 import { ICargoController } from "./interface/index.interface";
 
@@ -8,39 +8,23 @@ import { ICargoController } from "./interface/index.interface";
 
 export class cargoController implements ICargoController {
     //Get list
-    public async cargoListController(): Promise<IFunctionResponse<TCargo[] | null>> {
+    public async cargoListController(page:number, limit:number): Promise<IFunctionResponse<{cargos:TCargo[], pagination:IPagination}>> {
         return safe(async()=>{
-            return await cargoListService()
+            const cargos= await cargoListService(page, limit)
+            if(!cargos){
+                throw{
+                    status:404,
+                    message:"No hay cargos Registrados",
+                    error:"No content"
+                }
+            }
+            return{cargos:cargos.data, pagination:cargos.pagination}
         },{
             successStatus:200,
             successMessage:"Cargos Obtenidos Correctamente"
         })
     }
     
-    //Get paginated list
-    public async cargoListPaginatedController(req: any): Promise<IFunctionResponse<any>> {
-        return safe(async()=>{
-            // Obtener parámetros de paginación de la query
-            const page = req.query.page ? parseInt(req.query.page) : 1;
-            const limit = req.query.limit ? parseInt(req.query.limit) : 10;
-            
-            // Obtener cargos paginados
-            const result = await cargoListPaginatedService(page, limit);
-            
-            if (!result.data || result.data.length === 0) {
-                throw {
-                    status: 404,
-                    message: "No hay cargos registrados",
-                    error: "No content"
-                }
-            }
-            
-            return result;
-        },{
-            successStatus:200,
-            successMessage:"Cargos Obtenidos Correctamente (Paginados)"
-        })
-    }
 
     //Create Cargo
     public async createCargoController(cargo: TCargo): Promise<IFunctionResponse<TCargo>> {

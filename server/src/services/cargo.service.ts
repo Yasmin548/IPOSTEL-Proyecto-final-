@@ -1,14 +1,8 @@
 import Prisma from "../config/prisma.config"
 import { createCargoDTO, updateCargoDTO } from "../DTO/cargo.dto"
-import { TCargo } from "../types/index.types"
 
 
-export const cargoListService = async () =>{
-    const cargosData = await Prisma.cargo.findMany()
-    return cargosData.length>0? cargosData : null
-}
-
-export const cargoListPaginatedService = async (page: number = 1, limit: number = 10) => {
+export const cargoListService = async (page: number = 1, limit: number = 10) => {
     const skip = (page - 1) * limit;
     
     // Obtener el total de registros

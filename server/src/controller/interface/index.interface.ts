@@ -14,8 +14,7 @@ export interface IEmpleadoController{
 }
 
 export interface ICargoController{
-    cargoListController():Promise <IFunctionResponse<TCargo[] | null>>
-    cargoListPaginatedController(req: any):Promise <IFunctionResponse<any>>
+    cargoListController(page:number, limit:number):Promise <IFunctionResponse<{cargos:TCargo[], pagination:IPagination}>>
     createCargoController(cargo:createCargoDTO):Promise<IFunctionResponse<TCargo>>
     searchCargoByIDController(id:number):Promise<IFunctionResponse<TCargo | null>>
     searchCargoByNameController(name:string):Promise<IFunctionResponse<TCargo | null>>
