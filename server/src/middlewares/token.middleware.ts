@@ -38,18 +38,18 @@ export const verifyUser = (req:Request, res:Response, next:NextFunction)=>{
 
 export const permisologia= (rol:string)=>{
     return (req:Request, res:Response, next:NextFunction)=>{
-        const token= req.cookies["Acces-token"]
+        const token= req.cookies['Acces-Token']
         const decoded = verifyData(token)
 
         if(!token){
-            return res.status(401).json({ 
+            res.status(401).json({ 
                 status:401,
                 message:"No autenticado",
                 error:"Unathorized "})
             }
             
         if(decoded.rol!==rol){
-            return res.status(403).json({ 
+            res.status(403).json({ 
             status:403,
             message:"Forbidden",
             error:"Se requiere un rol mayor"})
