@@ -39,9 +39,12 @@ export const createMessageService= async(message:createMessageDto)=>{
     return newMessage
 }
 
-export const findByEmail = async(correo:string)=>{
+export const findMessagesByEmail = async(correo:string)=>{
     const messages = await Prisma.mensaje.findMany({
-        where:{correo:correo}
+        where:{correo:correo    },
+        orderBy:{
+            fecha:"desc"
+        }
     })
     return messages
 }

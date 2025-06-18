@@ -45,4 +45,5 @@ export interface IUserController{
 export interface IMessageController{
     messageListController(page:number, limit:number):Promise<IFunctionResponse<{messages:TMessage[], Pagination:IPagination}>>
     createMessageController(message:createMessageDto):Promise<IFunctionResponse<TMessage>>
+    searchMessagesByEmail(correo:string):Promise<IFunctionResponse<{messages:TMessage[]}>>
 }

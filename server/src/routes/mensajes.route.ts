@@ -18,5 +18,10 @@ messageRouter
     const response = await controller.createMessageController(message)
     sendResponse(res, response)
 })
+.get("/search", async(req:Request, res:Response)=>{
+    const correo = String(req.query.correo)
+    const response= await controller.searchMessagesByEmail(correo)
+    sendResponse(res, response)
+})
 
 export default messageRouter
