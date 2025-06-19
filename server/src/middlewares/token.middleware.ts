@@ -46,7 +46,7 @@ export const permisologia= (rol:string)=>{
                 status:401,
                 message:"No autenticado",
                 error:"Unathorized "})
-            }
+        }
             
         if(decoded.rol!==rol){
             res.status(403).json({ 
